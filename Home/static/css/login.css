@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500");
+
+html, body {
+    height: 100%; 
+    margin: 0;    
+    padding: 0;   
+    
+}
+
+.header_area {
+    background-color: #f8f9fa;
+    font-family: "Roboto", sans-serif;
+    padding: 10px 0;
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    z-index: 9999; 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+
+body {
+    padding-top: 70px; 
+}
+
+.main_menu .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+
+.logo-container img {
+    margin-right: 10px; 
+    margin-left: 80px;
+      
+}
+
+.navbar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    margin-right: 80px;
+    
+}
+
+/* Default styles for Log in and Sign up */
+.navbar-nav .nav-item .nav-link {
+    font-size: 16px;
+    color: gray;
+    text-decoration: none;
+    padding: 8px 16px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 5px;
+    
+}
+
+
+.navbar-nav .nav-item + .nav-item {
+    margin-left: 15px;
+}
+
+
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: darkblue;
+    color: white;
+}
+
+
+.login-btn {
+    display: flex;
+    align-items: center;
+    font-family: "Oswald", sans-serif;
+}
+
+
+.login-btn i {
+    margin-right: 8px; 
+}
+
+
+.sign-up-btn {
+    background-color: lightgray;
+    color: darkblue;
+    font-family: "Oswald", sans-serif;
+}
+
+.sign-up-btn:hover {
+    background-color: darkblue;
+    color: white;
+}
+
+
+/* Login section */
+.login-section {
+    display: flex;
+    height: 100vh;    
+    justify-content: flex-end; 
+    font-family: "Oswald", sans-serif;
+}
+
+.login-form-container {
+    flex: 1;  
+    width: 300px;
+    margin-right: 70px; 
+    margin-top: 60px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 80px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    align-self: center; 
+}
+
+.login-form-container h1 {
+    font-size: 28px;
+    color: black;
+    margin-bottom: 30px;
+    margin-top: 0px;
+}
+
+.login-form-container label {
+    font-size: 14px;
+    color: gray;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.login-form-container .login-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: darkblue; 
+    color: white; 
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    transition: background-color 0.3s ease; 
+}
+
+.login-form-container .login-btn:hover {
+    background-color: slateblue; 
+}
+
+.signup-option {
+    margin-top: 25px;
+    text-align: center;
+}
+
+
+.signup-option a {
+    color: darkblue;
+    text-decoration: none;
+}
+
+.or-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    position: relative;
+}
+
+.or-separator span {
+    flex: 1;
+    height: 1px;
+    background-color: #ccc;
+    margin: 0 10px;
+}
+
+.or-separator p {
+    color: gray;
+    margin: 0;
+}
+
+.google-login-btn {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Oswald", sans-serif;
+    font-size: 15px;
+}
+
+.google-login-btn i {
+    margin-right: 10px;
+    color: #DB4437; 
+}

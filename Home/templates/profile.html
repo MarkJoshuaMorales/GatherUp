@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GatherUp</title>
+        <link rel="icon" href="{% static 'img/Logo.png' %}" type="image/png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    </head>
+    <body>
+        <header class="header_area">            
+            <div class="main_menu">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container d-flex align-items-center justify-content-between">
+                        <div class="logo-container d-flex align-items-center">
+                            <img style="width: 10%;" src="{% static 'img/Logo Gather Up.png' %}" class="thumbnail">
+                            <a class="navbar-brand logo_h" href="#" style="text-decoration: none;">
+                                <span style="padding-left:10px;color: black; font-size: 180%; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                                    <span style="color: darkblue;">GatherUp</span>
+                                </span>
+                            </a>
+                        </div>
+                        
+                        <div class="navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ml-auto">
+                                {% if user.is_authenticated %}
+                                <!-- Show if the user is logged in -->
+                                <li class="nav-item">
+                                    <a class="nav-link notification-icon" href="#">
+                                        <i class="fas fa-bell"></i>
+                                    </a>
+                                </li>
+        
+                                <li class="nav-item">
+                                    <a class="nav-link user-icon" href="#">
+                                        <i class="fas fa-user-circle"></i>
+                                    </a>
+                                </li>
+        
+                                <li class="nav-item">
+                                    <a class="nav-link logout-btn" href="/">
+                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                    </a>
+                                </li>
+                                {% else %}
+                                <!-- Show login and signup if the user is not logged in -->
+                                <li class="nav-item">
+                                    <a class="nav-link login-btn" href="/">
+                                        <i class="fas fa-door-open"></i> Log in
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link sign-up-btn" href="#">
+                                        Sign up
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <section class="user-profile">
+            <div class="container profile-container">
+                <!-- Profile title -->
+                <h3 class="profile-title">Profile</h3>
+        
+                <!-- User Profile Information -->
+                <div class="profile-header">
+                    <div class="profile-picture">
+                        <img src="{% static 'img/Joshua.jpg' %}" alt="User Profile" class="user-avatar">
+                        <div class="profile-edit-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <h2>Mark Joshua Morales</h2>
+                        <p>Joined in September 2024</p>
+                        <p>
+                            <i class="fas fa-microphone-alt"></i> Events Hosted: 0
+                            <span class="events-separator"></span> 
+                            <i class="fas fa-calendar-check"></i> Events Attended: 0
+                        </p>
+                    </div>
+                </div>
+        
+                
+                <hr class="divider">
+        
+                <!-- Settings Section -->
+                <div class="settings">
+                    <h3 class="settings-title">Settings</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" value="Mark Joshua Morales" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" value="@markjoshua" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Bio</label>
+                            <textarea id="bio" placeholder="Share a little something about yourself"></textarea>
+                        </div>
+                
+                        <!-- Centered Delete Account Button with Warning Icon -->
+                        <div class="delete-btn-container">
+                            <button class="delete-account-btn">
+                                <i class="fas fa-exclamation-triangle"></i> Delete Account
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </body>
+    </html>
