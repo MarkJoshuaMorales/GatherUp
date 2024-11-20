@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>GatherUp</title>
-        <link rel="icon" href="{% static 'img/Logo.png' %}" type="image/png">
+        <link rel="icon" href="{% static 'img/LogoVer2.png' %}" type="image/png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     </head>
@@ -15,7 +15,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="container d-flex align-items-center justify-content-between">
                         <div class="logo-container d-flex align-items-center">
-                            <img style="width: 10%;" src="{% static 'img/Logo Gather Up.png' %}" class="thumbnail">
+                            <img style="width: 10%;" src="{% static 'img/Logo.png' %}" class="thumbnail">
                             <a class="navbar-brand logo_h" href="#" style="text-decoration: none;">
                                 <span style="padding-left:10px;color: black; font-size: 180%; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
                                     <span style="color: darkblue;">GatherUp</span>
@@ -25,10 +25,9 @@
                         
                         <div class="navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav ml-auto">
-                                {% if user.is_authenticated %}
-                                <!-- Show if the user is logged in -->
+                                
                                 <li class="nav-item">
-                                    <a class="nav-link notification-icon" href="#">
+                                    <a class="nav-link notification-icon" href="/user_notifications">
                                         <i class="fas fa-bell"></i>
                                     </a>
                                 </li>
@@ -43,20 +42,8 @@
                                     <a class="nav-link logout-btn" href="/">
                                         <i class="fas fa-sign-out-alt"></i> Logout
                                     </a>
-                                </li>
-                                {% else %}
-                                <!-- Show login and signup if the user is not logged in -->
-                                <li class="nav-item">
-                                    <a class="nav-link login-btn" href="/">
-                                        <i class="fas fa-door-open"></i> Log in
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link sign-up-btn" href="#">
-                                        Sign up
-                                    </a>
-                                </li>
-                                {% endif %}
+                                </li>                             
+                                                                
                             </ul>
                         </div>
                     </div>
@@ -64,6 +51,172 @@
             </div>
         </header>
 
+        <section class="main-section">
+            <div class="white-box">
+                <img src="{% static 'img/Joshua.jpg' %}" alt="Profile Picture" class="profile-picture">
+                <div class="text-info">
+                    <span class="greeting-text">Hi, Mark!</span>
+                    <div class="events-info">
+                        <i class="fas fa-microphone-alt"></i> Events Hosted: 0
+                        <span class="events-separator"></span> 
+                        <i class="fas fa-calendar-check"></i> Events Attended: 0
+                    </div>
+                </div>
+            </div>
+
+            <div class="upcoming-events">
+                <div class="left-text">
+                    <h2>Upcoming Events</h2>
+                </div>
+                <div class="middle-text">
+                    <h3 style="color: lightblue;">No Upcoming Events</h3>
+                    <p>You have no upcoming events. Why not create one?</p>
+                </div>
+                <div class="button-container">
+                    <a href="/user_eventcreation">
+                        <button class="create-event-btn">+ Create Event</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="previous-events">
+                <div class="left-text">
+                    <h2>Previous Events</h2>
+                </div>
+            </div>    
+
+            <div class="previous-events-content">
+                <!-- First Row -->
+                <div class="event-container">
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/100" alt="Event Image">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-left">
+                            <div class="event-month">DEC</div>
+                            <div class="event-day">09</div>
+                        </div>
+                        <div class="event-right">
+                            <div class="event-title">Seventeen Meet-and-Greet</div>
+                            <div class="event-host">By Host</div>
+                            <div class="event-time">6:30 PM - 9:30 PM</div>
+                            <div class="event-location">Intramuros, Manila</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-container">
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/100" alt="Event Image">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-left">
+                            <div class="event-month">DEC</div>
+                            <div class="event-day">09</div>
+                        </div>
+                        <div class="event-right">
+                            <div class="event-title">Seventeen Meet-and-Greet</div>
+                            <div class="event-host">By Host</div>
+                            <div class="event-time">6:30 PM - 9:30 PM</div>
+                            <div class="event-location">Intramuros, Manila</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-container">
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/100" alt="Event Image">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-left">
+                            <div class="event-month">DEC</div>
+                            <div class="event-day">09</div>
+                        </div>
+                        <div class="event-right">
+                            <div class="event-title">Seventeen Meet-and-Greet</div>
+                            <div class="event-host">By Host</div>
+                            <div class="event-time">6:30 PM - 9:30 PM</div>
+                            <div class="event-location">Intramuros, Manila</div>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Second Row -->
+                <div class="event-container">
+                     <div class="image-container">
+                     <img src="https://via.placeholder.com/100" alt="Event Image">
+                </div>
+                 <div class="event-content">
+                      <div class="event-left">
+                      <div class="event-month">DEC</div>
+                      <div class="event-day">10</div>
+                 </div>
+                 <div class="event-right">
+                    <div class="event-title">K-Pop Fan Meet</div>
+                    <div class="event-host">By Host</div>
+                    <div class="event-time">7:00 PM - 8:30 PM</div>
+                   <div class="event-location">Makati, Manila</div>
+               </div>
+             </div>
+           </div>
+               <div class="event-container">
+                   <div class="image-container">
+                   <img src="https://via.placeholder.com/100" alt="Event Image">
+            </div>
+               <div class="event-content">
+                    <div class="event-left">
+                    <div class="event-month">DEC</div>
+                    <div class="event-day">11</div>
+            </div>
+            <div class="event-right">
+              <div class="event-title">Music Festival</div>
+              <div class="event-host">By Host</div>
+              <div class="event-time">5:00 PM - 11:00 PM</div>
+              <div class="event-location">BGC, Taguig</div>
+            </div>
+           </div>
+         </div>
+         <div class="event-container">
+             <div class="image-container">
+              <img src="https://via.placeholder.com/100" alt="Event Image">
+       </div>
+         <div class="event-content">
+           <div class="event-left">
+              <div class="event-month">DEC</div>
+              <div class="event-day">12</div>
+          </div>
+           <div class="event-right">
+              <div class="event-title">Food Bazaar</div>
+              <div class="event-host">By Host</div>
+              <div class="event-time">3:00 PM - 8:00 PM</div>
+              <div class="event-location">Quezon City</div>
+          </div>
+       </div>
+     </div>
+    </div>
+
+            <div class="see-more-container">
+                <button class="see-more-btn">See More</button>
+            </div>
+        
+            
+            <footer class="footer">
+                <div class="footer-title">
+                    <span class="footer-text">Gather</span><span class="footer-text-highlight">Up</span>
+                </div>
+                <div class="footer-navigation">
+                    <a href="/user_dashboard" class="footer-link">Home</a>
+                    <a href="/user_profile" class="footer-link">Profile</a>
+                </div>
+                <div class="footer-divider"></div>
+                <div class="footer-copyright">
+                    ©2024 GatherUp. All rights reserved.
+                </div>
+            </footer>
+
+        </section>
+
+        
        
 
     </body>

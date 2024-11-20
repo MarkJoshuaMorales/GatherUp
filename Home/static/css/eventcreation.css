@@ -1,0 +1,314 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500");
+
+html, body {
+    height: 100%; 
+    margin: 0;    
+    padding: 0;      
+    
+}
+
+.header_area {
+    background-color: #f8f9fa;
+    font-family: "Roboto", sans-serif;
+    padding: 10px 0;
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    z-index: 9999; 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.main_menu .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    margin-right: 10px; 
+    margin-left: 80px;
+}
+
+.navbar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 15px;
+}
+
+
+.notification-icon i {
+    font-size: 22px;
+    color: gray;
+    transition: color 0.3s ease;
+    margin-right: 10px;
+}
+
+.notification-icon i:hover {
+    color: darkblue;
+}
+
+
+.user-icon i {
+    font-size: 22px;
+    color: gray;
+    transition: color 0.3s ease;
+}
+
+.user-icon i:hover {
+    color: darkblue;
+    
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: gray;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    font-family: "Oswald", sans-serif;
+}
+
+.logout-btn i {
+    margin-right: 8px;
+}
+
+.logout-btn:hover {
+    background-color: darkblue;
+    color: white;
+}
+
+
+/* Event Creation Section */
+.event-creation {
+    padding: 120px 20px 20px; 
+    display: flex;
+    justify-content: center;
+    font-family: "Oswald", sans-serif;
+}
+
+.event-name-input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: "Oswald", sans-serif;
+    color: #221874; 
+}
+
+.container {
+    display: flex;
+    gap: 20px;      
+    width: 95%;
+}
+
+.left-box {
+    flex: 1;
+    margin-bottom: 760px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    background-color: #eaeaea;
+    border-radius: 10px;
+    padding: 20px;
+    gap: 10px; 
+}
+
+.image-box {
+    width: 100%;
+    height: 350px; 
+    border: 2px dashed #cccccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #888888;
+}
+
+.upload-photo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.upload-photo-input {
+    display: none; 
+}
+
+.upload-photo-btn {
+    background-color: #221874;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    width: 90%; 
+    
+}
+
+.upload-photo-btn i {
+    font-size: 1rem; 
+    margin-right: 5px;
+}
+
+.upload-photo-btn:hover {
+    background-color: #3b34c1;
+}
+
+
+.right-box {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-item {
+    background-color: #e3e9ef;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.item-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #221874; 
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.item-header i {
+    color: #221874; 
+}
+
+.date-time-input,
+.location-type,
+.ticket-type,
+.capacity-input,
+.description-input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #221874; 
+    font-family: "Oswald", sans-serif;
+}
+
+.description-input {
+    font-family: "Oswald", sans-serif;
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: none;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 20px;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: darkblue;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #cccccc;
+    margin: 20px 0;
+}
+
+.create-event-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+}
+
+.create-event-btn {
+    background-color: #221874; 
+    color: white;
+    font-size: 1rem;
+    padding: 10px 370px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: "Oswald", sans-serif;
+}
+
+.create-event-btn:hover {
+    background-color: #3b34c1; 
+}
+
+.location-input {
+    font-family: "Oswald", sans-serif;
+    width: 95%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}

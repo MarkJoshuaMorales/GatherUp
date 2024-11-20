@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>GatherUp</title>
-        <link rel="icon" href="{% static 'img/Logo.png' %}" type="image/png">
+        <link rel="icon" href="{% static 'img/LogoVer2.png' %}" type="image/png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     </head>
@@ -15,7 +15,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="container d-flex align-items-center justify-content-between">
                         <div class="logo-container d-flex align-items-center">
-                            <img style="width: 10%;" src="{% static 'img/Logo Gather Up.png' %}" class="thumbnail">
+                            <img style="width: 10%;" src="{% static 'img/Logo.png' %}" class="thumbnail">
                             <a class="navbar-brand logo_h" href="#" style="text-decoration: none;">
                                 <span style="padding-left:10px;color: black; font-size: 180%; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
                                     <span style="color: darkblue;">GatherUp</span>
@@ -25,16 +25,16 @@
                         
                         <div class="navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav ml-auto">
-                                {% if user.is_authenticated %}
-                                <!-- Show if the user is logged in -->
+                                
+                                
                                 <li class="nav-item">
-                                    <a class="nav-link notification-icon" href="#">
+                                    <a class="nav-link notification-icon" href="/user_notifications">
                                         <i class="fas fa-bell"></i>
                                     </a>
                                 </li>
         
                                 <li class="nav-item">
-                                    <a class="nav-link user-icon" href="#">
+                                    <a class="nav-link user-icon" href="/user_profile">
                                         <i class="fas fa-user-circle"></i>
                                     </a>
                                 </li>
@@ -44,19 +44,7 @@
                                         <i class="fas fa-sign-out-alt"></i> Logout
                                     </a>
                                 </li>
-                                {% else %}
-                                <!-- Show login and signup if the user is not logged in -->
-                                <li class="nav-item">
-                                    <a class="nav-link login-btn" href="/">
-                                        <i class="fas fa-door-open"></i> Log in
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link sign-up-btn" href="#">
-                                        Sign up
-                                    </a>
-                                </li>
-                                {% endif %}
+                                
                             </ul>
                         </div>
                     </div>

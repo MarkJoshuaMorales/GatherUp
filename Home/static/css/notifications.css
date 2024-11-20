@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,500");
+
+html, body {
+    height: 100%; 
+    margin: 0;    
+    padding: 0;   
+    
+}
+
+.header_area {
+    background-color: #f8f9fa;
+    font-family: "Roboto", sans-serif;
+    padding: 10px 0;
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    z-index: 9999; 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.main_menu .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-container img {
+    margin-right: 10px; 
+    margin-left: 80px;
+}
+
+.navbar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    margin-right: 80px;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 15px;
+}
+
+
+.notification-icon i {
+    font-size: 22px;
+    color: gray;
+    transition: color 0.3s ease;
+    margin-right: 10px;
+}
+
+.notification-icon i:hover {
+    color: darkblue;
+}
+
+
+.user-icon i {
+    font-size: 22px;
+    color: gray;
+    transition: color 0.3s ease;
+}
+
+.user-icon i:hover {
+    color: darkblue;
+    
+}
+
+.logout-btn {
+    font-family: "Oswald", sans-serif;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: gray;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.logout-btn i {
+    margin-right: 8px;
+}
+
+.logout-btn:hover {
+    background-color: darkblue;
+    color: white;
+}
+
+/*main content*/
+.notifications-container {
+    max-width: 800px;
+    margin: 100px auto 0;
+    font-family: 'Oswald', sans-serif;
+    padding-bottom: 20px;
+}
+
+.notifications-container h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.tabs {
+    display: flex;
+    justify-content: right;
+    margin-bottom: 20px;
+}
+
+.tab {
+    background: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.tab.active {
+    background: darkblue;
+    color: white;
+}
+
+.notifications {
+    display: block;
+}
+
+.notification-group {
+    margin-bottom: 20px;
+}
+
+.notification-group h3 {
+    font-size: 1.2em;
+    color: gray;
+    margin-bottom: 10px;
+}
+
+.notification-card {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.notification-card .dot {
+    height: 15px;
+    width: 15px;
+    background-color: darkblue;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.notification-card .content {
+    flex-grow: 1;
+}
+
+.notification-card .content .title {
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+    margin-left: 5px;
+}
+
+.notification-card .content .description {
+    margin: 5px 0;
+    color: gray;
+    margin-left: 5px;
+}
+
+.notification-card .content .time {
+    font-size: 0.9em;
+    color: lightgray;
+    margin-left: 5px;
+}
+
+.notification-card.unread {
+    background-color: #edf5fb; /* Light blue for unread messages */
+    cursor: pointer;
+}
+
+.notification-card.unread:hover {
+    background-color: #edf5fb; /* Slightly darker blue on hover */
+}

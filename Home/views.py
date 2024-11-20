@@ -27,6 +27,25 @@ def profile(request):
     }
     return render(request, "profile.html", context)
 
+def eventcreation(request):    
+    context = {
+        
+    }
+    return render(request, "eventcreation.html", context)
+
+def userregistration(request):    
+    context = {
+        
+    }
+    return render(request, "userregistration.html", context)
+
+def notifications(request):    
+    context = {
+        
+    }
+    return render(request, "notifications.html", context)
+
+
 
 
 

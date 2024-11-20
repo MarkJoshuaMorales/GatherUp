@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GatherUp</title>
+        <link rel="icon" href="{% static 'img/LogoVer2.png' %}" type="image/png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="{% static 'css/userregistration.css' %}">
+    </head>
+    <body>
+        <header class="header_area">            
+            <div class="main_menu">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container d-flex align-items-center justify-content-between">
+                        <div class="logo-container d-flex align-items-center">
+                            <img style="width: 10%;" src="{% static 'img/Logo.png' %}" class="thumbnail">
+                            <a class="navbar-brand logo_h" href="#" style="text-decoration: none;">
+                                <span style="padding-left:10px;color: black; font-size: 180%; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                                    <span style="color: darkblue;">GatherUp</span>
+                                </span>
+                            </a>
+                        </div>
+                        
+                        <div class="navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ml-auto">
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link notification-icon" href="/user_notifications">
+                                        <i class="fas fa-bell"></i>
+                                    </a>
+                                </li>
+        
+                                <li class="nav-item">
+                                    <a class="nav-link user-icon" href="/user_profile">
+                                        <i class="fas fa-user-circle"></i>
+                                    </a>
+                                </li>
+        
+                                <li class="nav-item">
+                                    <a class="nav-link logout-btn" href="/">
+                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                    </a>
+                                </li>                             
+                                                                
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <section class="main-section">
+            <div class="image-container">
+                <img src="{% static 'img/sample-event.jpg' %}" alt="Event Image">
+            </div>
+        
+
+            <!-- Event Content -->
+            <div class="content-container">
+                <!-- Left Content -->
+                <div class="left-content">
+                    <div class="event-title">Sound of Music</div>
+                    <div class="icon-text">
+                        <i class="fas fa-calendar-alt"></i> Mon, September 03
+                    </div>
+                    <div class="icon-text1">
+                         6:00AM-10:00AM
+                    </div>
+                    <div class="icon-text">
+                        <i class="fas fa-map-marker-alt"></i> Pamantasan ng Lungsod ng Maynila
+                    </div>
+                    <div class="icon-text1">
+                        Intramuros, Manila
+                    </div>
+                </div>
+
+                <!-- Right Content -->
+                <div class="right-content">
+                    <div class="hosted-by">
+                        <div class="hosted-container">
+                            <div class="text-left">Hosted by</div>
+                            <div class="gray-line"></div>
+                        </div>
+                        <div class="user-icon">
+                            <img src="{% static 'img/Joshua.jpg' %}" alt="Profile Picture" class="profile-picture">
+                            Mark
+                        </div>
+                    </div>
+                    <div class="attendees">
+                        <div class="attendees-container">
+                            <div class="text-left">100 attendees</div>
+                            <div class="gray-line"></div>
+                        </div>
+                    </div>
+                </div>  
+            </div>              
+ 
+            <div class="registration-container" id="registration-container">
+                <div class="registration-header">Registration</div>
+                <div class="gray-line"></div>
+                <div class="registration-message">
+                    Welcome! To join the event, please register below.
+                </div>
+                <div class="registration-details">
+                    <div class="registrant-info">
+                        <img src="{% static 'img/Joshua.jpg' %}" alt="Profile Picture" class="profile-picture">
+                        Mark Morales
+                    </div>
+                    <button class="register-button" onclick="changeContent()">
+                        <i class="fas fa-check-circle"></i> Register
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Script for the container -->
+            <script>
+                function changeContent() {
+                    
+                    const registrationContainer = document.getElementById('registration-container');
+                    
+                    
+                    registrationContainer.innerHTML = '';
+            
+                    
+                    const logo = document.createElement('img');
+                    logo.src = '{% static "img/LogoVer2.png" %}';  
+                    logo.alt = 'Event Logo';
+                    logo.style.width = '100px';  
+                    logo.style.margin = '0 auto';
+                    logo.style.display = 'left';
+            
+                    const thankYouText = document.createElement('p');
+                    thankYouText.textContent = 'Thank you for Joining!';
+                    thankYouText.style.fontSize = '30px';
+                    thankYouText.style.textAlign = 'left';
+                    thankYouText.style.marginTop = '10px';
+            
+                    const messageText = document.createElement('p');
+                    messageText.textContent = 'We hope you enjoyed the event.';
+                    messageText.style.fontSize = '18px';
+                    messageText.style.textAlign = 'left';
+                    messageText.style.marginTop = '5px';
+            
+                    // Append the new elements
+                    registrationContainer.appendChild(logo);
+                    registrationContainer.appendChild(thankYouText);
+                    registrationContainer.appendChild(messageText);
+                }
+            </script>
+
+            <!-- About Event Section -->
+    <div class="about-event-container">
+        <div class="about-event-header">About the Event</div>
+        <div class="gray-line"></div>
+        <div class="about-event-description">
+            Whenever I see girls and boys selling lanterns on the streets, I remember the Child
+            in the manger, as he sleeps. Wherever there are people giving gifts, exchanging cards,
+            I believe that Christmas is truly in their hearts.
+
+            Let's light our Christmas trees for a bright tomorrow, where nations are at peace
+            and all are one in God.
+
+            Let's sing Merry Christmas and a happy holiday. This season may we never forget
+            the love we have for Jesus. Let Him be the one to guide us as another new year starts,
+            and may the spirit of Christmas be always in our hearts.
+
+            In every prayer and every song, the community unites, celebrating the birth
+            of our Savior, Jesus Christ. Let love, like that starlight on that first Christmas morn,
+            lead us back to the manger, where Christ the Child was born.
+        </div>
+    </div>
+
+    <!-- Location Section -->
+    <div class="location-container">
+        <div class="location-header">Location</div>
+        <div class="gray-line"></div>
+        <!-- Location Text -->
+        <div class="location-name">Pamantasan ng Lungsod ng Maynila</div>
+        <div class="location-subtext">Intramuros, Manila</div>
+        
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1930.736013064427!2d120.9737151!3d14.5879216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397ca13d8a45617%3A0xe9db3d2c4f54a1c1!2sPamantasan%20ng%20Lungsod%20ng%20Maynila!5e0!3m2!1sen!2sph!4v1632891071701!5m2!1sen!2sph" 
+                width="100%" 
+                height="350" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </div>
+
+            </section>
+           
+
+
+        
+    </body>
+    </html>
