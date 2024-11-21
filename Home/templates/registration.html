@@ -7,95 +7,100 @@
         <title>GatherUp</title>
         <link rel="icon" href="{% static 'img/LogoVer2.png' %}" type="image/png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/registration.css' %}">
     </head>
     <body>
-      <header class="header_area">            
-          <div class="main_menu">
-              <nav class="navbar navbar-expand-lg navbar-light">
-                  <div class="container d-flex align-items-center justify-content-between">
-                      
-                      <div class="logo-container d-flex align-items-center">
-                          <img style="width: 10%;" src="{% static 'img/Logo.png' %}" class="thumbnail">
-                          <a class="navbar-brand logo_h" href="#" style="text-decoration: none;">
-                           <span style="padding-left:10px;color: black; font-size: 180%; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-                               <span style="color: darkblue;">GatherUp</span>
-                           </span>
-                       </a>
-                      </div>
-                      
-                      <div class="navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ml-auto">
-                           
-                            <li class="nav-item">
-                                <a class="nav-link login-btn" href="/">
-                                    <i class="fas fa-door-open"></i> Log in
-                                </a>
-                            </li>
+        <header class="header_area">            
+            <div class="main_menu">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container d-flex align-items-center justify-content-between">
+                        
+                        <div class="logo-container d-flex align-items-center">
+                            <img style="width: 10%;" src="{% static 'img/Logo.png' %}" class="thumbnail">
+                            <a class="navbar-brand logo_h" href="#" style="text-decoration: none;">
+                                <span style="padding-left:10px;color: black; font-size: 180%; font-family:'Nunito', sans-serif; font-weight: bold;">
+                                    <span style="color: darkblue;">GatherUp</span>
+                                </span>
+                            </a>
+                        </div>
+                        
+                        <div class="navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav ml-auto">
                             
-                           
-                            <li class="nav-item">
-                                <a class="nav-link sign-up-btn" href="#"> <!--make sure to change it to the right url--> 
-                                    Sign up
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                  </div>
-              </nav>
-          </div>
-      </header>
-
-
-      <section class="register-section" style="position: relative; background-image: url('{% static 'img/Sign Up.png' %}'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 115vh; margin-top: 0px; ">
-        <div class="register-container">
-            <div class="register-image"></div>
-    
-            <div class="register-form-container">
-                <h1>Sign Up</h1>
-                <form action="" method="POST">
-                    {% csrf_token %}
-                    
-                    <!-- Your Name -->
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                    
-                    <!-- Email -->
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
-    
-                    <!-- Password and Confirm Password on the same row -->
-                    <div class="password-container">
-                        <div class="password-field">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                        </div>
-                        <div class="confirm-password-field">
-                            <label for="confirm-password">Confirm Password</label>
-                            <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm your password" required>
+                                <li class="nav-item">
+                                    <a class="nav-link login-btn" href="/">
+                                        <i class="fas fa-door-open"></i> Log in
+                                    </a>
+                                </li>
+                                
+                            
+                                <li class="nav-item">
+                                    <a class="nav-link sign-up-btn" href="#"> <!--make sure to change it to the right url--> 
+                                        Sign up
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    
-                    <!-- Submit button -->
-                    <button type="submit" class="signup-btn">Sign Up</button>
-                </form>
-    
-                <!-- OR Separator -->
-                <div class="or-separator">
-                    <span></span>
-                    <p>OR</p>
-                    <span></span>
-                </div>
-    
-                <!-- Google Sign Up button -->
-                <button class="google-signup-btn">
-                    <img src="{% static 'img/google-logo.png' %}" alt="Google Logo" style="width: 20px; height: 20px; margin-right: 10px;">
-                    Sign Up with Google
-                </button>
+                </nav>
             </div>
-        </div>
-    </section>
+        </header>
 
 
-      </body>
+        <section class="register-section" style="position: relative; background-image: url('{% static 'img/Sign Up.png' %}'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 115vh; margin-top: 0px; ">
+            <div class="register-container">
+                <div class="register-image"></div>
+        
+                <div class="register-form-container">
+                    <h1>Sign Up</h1>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        
+                        <!-- Your Name -->
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                        
+                        <!-- Email -->
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        
+                        <!-- Password and Confirm Password on the same row -->
+                        <div class="password-container">
+                            <div class="password-field">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                            </div>
+                            <div class="confirm-password-field">
+                                <label for="confirm-password">Confirm Password</label>
+                                <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm your password" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Submit button -->
+                        <button type="submit" class="signup-btn">Sign Up</button>
+                    </form>
+
+                    <div class="login-option">
+                        <p>Already have an account? <a href="/">Login</a></p>
+                    </div>
+        
+                    <!-- OR Separator -->
+                    <div class="or-separator">
+                        <span></span>
+                        <p>OR</p>
+                        <span></span>
+                    </div>
+        
+                    <!-- Google Sign Up button -->
+                    <button class="google-signup-btn">
+                        <img src="{% static 'img/google-logo.png' %}" alt="Google Logo" style="width: 20px; height: 20px; margin-right: 10px;">
+                        Sign Up with Google
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        </body>
     </html>

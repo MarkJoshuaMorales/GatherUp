@@ -5,5 +5,5 @@ from .models import*
 
 class AddUserProfileForm(forms.ModelForm):
     class Meta:
-        model = UserProfile
+        model = SignUp
         fields = '__all__'
