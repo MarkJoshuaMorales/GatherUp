@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600");
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 html, body {
     height: 100%; 
@@ -10,7 +9,7 @@ html, body {
 
 .header_area {
     background-color: #f8f9fa;
-    font-family: "Roboto", sans-serif;
+    font-family: "Nunito", sans-serif;
     padding: 10px 0;
     position: fixed; 
     top: 0;
@@ -81,7 +80,7 @@ html, body {
     padding: 8px 16px;
     border-radius: 5px;
     transition: color 0.3s ease, background-color 0.3s ease;
-    font-family: "Oswald", sans-serif;
+    font-family: "Nunito", sans-serif;
 }
 
 .logout-btn i {
@@ -99,7 +98,7 @@ html, body {
     padding: 120px 20px 20px; 
     display: flex;
     justify-content: center;
-    font-family: "Oswald", sans-serif;
+    font-family: "Nunito", sans-serif;
 }
 
 .event-name-input {
@@ -108,7 +107,7 @@ html, body {
     border: 1px solid #cccccc;
     border-radius: 5px;
     font-size: 1rem;
-    font-family: "Oswald", sans-serif;
+    font-family: "Nunito", sans-serif;
     color: #221874; 
 }
 
@@ -216,11 +215,11 @@ html, body {
     border-radius: 5px;
     font-size: 1rem;
     color: #221874; 
-    font-family: "Oswald", sans-serif;
+    font-family: "Nunito", sans-serif;
 }
 
 .description-input {
-    font-family: "Oswald", sans-serif;
+    font-family: "Nunito", sans-serif;
     width: 95%;
     padding: 10px;
     border: 1px solid #cccccc;
@@ -296,7 +295,7 @@ hr {
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-family: "Oswald", sans-serif;
+    font-family: "Nunito", sans-serif;
 }
 
 .create-event-btn:hover {
@@ -304,7 +303,7 @@ hr {
 }
 
 .location-input {
-    font-family: "Oswald", sans-serif;
+    font-family: "Nunito", sans-serif;
     width: 95%;
     padding: 8px;
     margin-top: 10px;
