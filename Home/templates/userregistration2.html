@@ -1,3 +1,5 @@
+<!-- Template for Registered Not Signed In  -->
+
 <!DOCTYPE html>
 <html lang="en">
     {% load static %}
@@ -7,7 +9,7 @@
         <title>GatherUp</title>
         <link rel="icon" href="{% static 'img/LogoVer2.png' %}" type="image/png">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <link rel="stylesheet" href="{% static 'css/userregistration.css' %}">
+        <link rel="stylesheet" href="{% static 'css/userregistration2.css' %}">
     </head>
     <body>
         <header class="header_area">            
@@ -85,7 +87,7 @@
                         </div>
                         <div class="user-icon">
                             <img src="{% static 'img/Joshua.jpg' %}" alt="Profile Picture" class="profile-picture" style="height: 30px; width: 30px;" >
-                            <span>Mark</span>
+                            Mark
                         </div>
                     </div>
                     <div class="attendees">
@@ -103,11 +105,7 @@
                 <div class="registration-message">
                     Welcome! To join the event, please register below.
                 </div>
-                <div class="registration-details">
-                    <div class="registrant-info">
-                        <img src="{% static 'img/Joshua.jpg' %}" alt="Profile Picture" class="profile-picture"  style="height: 30px; width: 30px;">
-                        Mark Morales
-                    </div>
+                
                     <button class="register-button" onclick="changeContent()">
                         <i class="bi bi-ticket-detailed"></i> Register
                     </button>
@@ -117,37 +115,98 @@
             <!-- Script for the container -->
             <script>
                 function changeContent() {
-                    
                     const registrationContainer = document.getElementById('registration-container');
-                    
+                
                     
                     registrationContainer.innerHTML = '';
-            
+                
                     
                     const logo = document.createElement('img');
                     logo.src = '{% static "img/BlackLogo.png" %}';  
                     logo.alt = 'Event Logo';
                     logo.style.width = '50px';  
                     logo.style.margin = '0 auto';
-                    logo.style.display = 'left';
-            
-                    const thankYouText = document.createElement('p');
-                    thankYouText.textContent = 'Thank you for Joining!';
-                    thankYouText.style.fontSize = '30px';
-                    thankYouText.style.textAlign = 'left';
-                    thankYouText.style.marginTop = '10px';
-            
-                    const messageText = document.createElement('p');
-                    messageText.textContent = 'We hope you enjoyed the event.';
-                    messageText.style.fontSize = '18px';
-                    messageText.style.textAlign = 'left';
-                    messageText.style.marginTop = '0px';
-            
-                    // Append the new elements
+                    logo.style.display = 'left';                
+                
+                    
+                    const yourInfoText = document.createElement('p');
+                    yourInfoText.textContent = 'Your Info';
+                    yourInfoText.style.fontSize = '24px';
+                    yourInfoText.style.fontWeight = 'bold'; 
+                    yourInfoText.style.textAlign = 'left';
+                    yourInfoText.style.marginTop = '5px';
+                    yourInfoText.style.color = 'black';
+                
+                    
+                    const nameText = document.createElement('p');
+                    nameText.textContent = 'Name';
+                    nameText.style.fontSize = '18px';
+                    nameText.style.textAlign = 'left';
+                    nameText.style.marginTop = '10px'; 
+                
+                    
+                    const nameInput = document.createElement('input');
+                    nameInput.type = 'text';    
+                    nameInput.style.width = '95%';
+                    nameInput.style.padding = '10px';
+                    nameInput.style.marginTop = '0px';
+                    nameInput.style.border = '2px solid #cccccc';
+                    nameInput.style.borderRadius = '15px';
+                    nameInput.style.fontSize = '16px';
+                    nameInput.style.backgroundColor = 'transparent'; 
+                
+                    
+                    const emailText = document.createElement('p');
+                    emailText.textContent = 'Email';
+                    emailText.style.fontSize = '18px';
+                    emailText.style.textAlign = 'left';
+                    emailText.style.marginTop = '15px'; 
+                
+                    
+                    const emailInput = document.createElement('input');
+                    emailInput.type = 'email';    
+                    emailInput.style.width = '95%';
+                    emailInput.style.padding = '10px';
+                    emailInput.style.marginTop = '5px';
+                    emailInput.style.border = '2px solid #cccccc';
+                    emailInput.style.borderRadius = '15px';
+                    emailInput.style.fontSize = '16px';
+                    emailInput.style.backgroundColor = 'transparent'; 
+                                   
                     registrationContainer.appendChild(logo);
-                    registrationContainer.appendChild(thankYouText);
-                    registrationContainer.appendChild(messageText);
+                    registrationContainer.appendChild(yourInfoText);
+                    registrationContainer.appendChild(nameText);
+                    registrationContainer.appendChild(nameInput);
+                    registrationContainer.appendChild(emailText);
+                    registrationContainer.appendChild(emailInput);
+
+                    const registerButton = document.createElement('button');
+                    registerButton.style.width = '97%';
+                    registerButton.style.padding = '15px';
+                    registerButton.style.marginTop = '30px';
+                    registerButton.style.backgroundColor = '#315098';
+                    registerButton.style.color = 'white';
+                    registerButton.style.border = 'none';
+                    registerButton.style.borderRadius = '10px';
+                    registerButton.style.fontSize = '16px';
+                    registerButton.style.cursor = 'pointer';
+                    registerButton.style.display = 'flex';
+                    registerButton.style.alignItems = 'center';
+                    registerButton.style.justifyContent = 'center';
+                    registerButton.style.gap = '10px';
+                    registerButton.innerHTML = '<i class="bi bi-ticket-detailed"></i> Register';
+
+        
+                    registrationContainer.appendChild(logo);
+                    registrationContainer.appendChild(yourInfoText);
+                    registrationContainer.appendChild(nameText);
+                    registrationContainer.appendChild(nameInput);
+                    registrationContainer.appendChild(emailText);
+                    registrationContainer.appendChild(emailInput);
+                    registrationContainer.appendChild(registerButton);
                 }
+                               
+                
             </script>
 
             <!-- About Event Section -->

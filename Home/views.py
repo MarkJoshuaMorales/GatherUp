@@ -45,6 +45,19 @@ def notifications(request):
     }
     return render(request, "notifications.html", context)
 
+def dashboard2(request):    
+    context = {
+        
+    }
+    return render(request, "dashboard2.html", context)
+
+def userregistration2(request):    
+    context = {
+        
+    }
+    return render(request, "userregistration2.html", context)
+
+
 
 
 

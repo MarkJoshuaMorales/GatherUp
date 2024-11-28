@@ -192,9 +192,7 @@ html, body {
     justify-content: flex-start; 
     margin-top: 10px;
     margin-bottom: 10px;
-    text-align: left;       
-    
-   
+    text-align: left; 
 }
 
 .right-content {
@@ -204,10 +202,10 @@ html, body {
 
 .profile-picture {
     width: 30px; 
-    height: 30px; 
+    height: 30px;
     border-radius: 50%; 
     object-fit: cover; 
-    margin-right: 8px; 
+    margin-right: 10px; 
 }
 
 .attendees-container {

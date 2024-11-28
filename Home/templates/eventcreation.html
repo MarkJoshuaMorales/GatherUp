@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>GatherUp</title>
         <link rel="icon" href="{% static 'img/LogoVer2.png' %}" type="image/png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="{% static 'css/eventcreation.css' %}">
     </head>
     <body>
@@ -16,10 +16,10 @@
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="container d-flex align-items-center justify-content-between">
                         <div class="logo-container d-flex align-items-center">
-                            <img style="width: 10%;" src="{% static 'img/Logo.png' %}" class="thumbnail">
+                            <img style="width: 8%;" src="{% static 'img/Logo.png' %}" class="thumbnail">
                             <a class="navbar-brand logo_h" href="#" style="text-decoration: none;">
-                                <span style="padding-left:10px;color: black; font-size: 180%; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-                                    <span style="color: darkblue;">GatherUp</span>
+                                <span style="padding-left:10px; color: black; font-size: 180%; font-family: 'Nunito', sans-serif; font-weight: 1000;"> 
+                                    <span style="color: #315098;">GatherUp</span>
                                 </span>
                             </a>
                         </div>
@@ -29,19 +29,19 @@
                                 
                                 <li class="nav-item">
                                     <a class="nav-link notification-icon" href="/user_notifications">
-                                        <i class="fas fa-bell"></i>
+                                        <i class="bi bi-bell"></i>
                                     </a>
                                 </li>
         
                                 <li class="nav-item">
                                     <a class="nav-link user-icon" href="/user_profile">
-                                        <i class="fas fa-user-circle"></i>
+                                        <i class="bi bi-person-circle"></i>
                                     </a>
                                 </li>
         
                                 <li class="nav-item">
                                     <a class="nav-link logout-btn" href="/">
-                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                        <i class="bi bi-box-arrow-right"></i> Logout
                                     </a>
                                 </li>                             
                                                                 
@@ -61,54 +61,49 @@
                     <!-- Upload Photo Button -->
                     <div class="upload-photo-container">
                         <input type="file" id="upload-photo" class="upload-photo-input" accept="image/*">
-                        <label for="upload-photo" class="upload-photo-btn"><i class="fas fa-camera"></i> Upload a Photo</label>
+                        <label for="upload-photo" class="upload-photo-btn"><i class="bi bi-camera-fill"></i> Upload a Photo</label>
                     </div>
                 </div>
-
-                 <div class="right-box">
-            <!-- Event Name -->
-            <div class="form-item">
-                <div class="item-header">
-                    <i class="fas fa-pencil-alt"></i> Event Name
-                </div>
-                <input type="text" class="event-name-input" placeholder="Enter event name...">
-            </div>
-                
         
-                <!-- Right Section: Form Items -->
                 <div class="right-box">
+                    <!-- Event Name -->
+                    <div class="form-item">
+                        <div class="item-header">
+                            <i class="bi bi-pencil"></i> Event Name
+                        </div>
+                        <input type="text" class="event-name-input" placeholder="Enter event name...">
+                    </div>
+        
                     <!-- Event Start & End -->
                     <div class="form-item time-picker">
                         <div class="item-header">
-                            <i class="fas fa-clock"></i> Event Start
+                            <i class="bi bi-clock"></i> Event Start
                         </div>
                         <input type="datetime-local" class="date-time-input">
                         <hr>
                         <div class="item-header">
-                            <i class="fas fa-clock"></i> Event End
+                            <i class="bi bi-clock"></i> Event End
                         </div>
                         <input type="datetime-local" class="date-time-input">
                     </div>
         
                     <!-- Event Location -->
-                    
-                        <div class="form-item">
-                            <div class="item-header">
-                                <i class="fas fa-map-marker-alt"></i> Event Location
-                            </div>
-                            <div class="location-container">
-                                <select class="location-type" id="location-selector">
-                                    <option value="online">Online Link</option>
-                                    <option value="offline">Offline Address</option>
-                                </select>
-                            </div>
+                    <div class="form-item">
+                        <div class="item-header">
+                            <i class="bi bi-geo-alt"></i> Event Location
                         </div>
-              
-        
+                        <div class="location-container">
+                            <select class="location-type" id="location-selector">
+                                <option value="online">Online Link</option>
+                                <option value="offline">On-site Address</option>
+                            </select>
+                        </div>
+                    </div>                    
+
                     <!-- Event Description -->
                     <div class="form-item">
                         <div class="item-header">
-                            <i class="fas fa-file-alt"></i> Event Description
+                            <i class="bi bi-sticky"></i> Event Description
                         </div>
                         <textarea class="description-input" rows="4" placeholder="Enter event description..."></textarea>
                     </div>
@@ -116,15 +111,12 @@
                     <!-- Tickets & Options -->
                     <div class="form-item">
                         <div class="item-header">
-                            <i class="fas fa-ticket-alt"></i> Tickets
+                            <i class="bi bi-ticket-perforated"></i> Tickets
                         </div>
-                        <select class="ticket-type">
-                            <option value="free">Free</option>
-                            <option value="paid">Paid</option>
-                        </select>
+                        <input type="number" id="ticket-input" class="ticket-input" placeholder="Enter Ticket Price (0 for free)" min="0">
                         <hr>
                         <div class="item-header">
-                            <i class="fas fa-lock"></i> Private Event
+                            <i class="bi bi-shield"></i> Private Event
                         </div>
                         <label class="switch">
                             <input type="checkbox">
@@ -132,18 +124,15 @@
                         </label>
                         <hr>
                         <div class="item-header">
-                            <i class="fas fa-users"></i> Capacity
+                            <i class="bi bi-people"></i> Capacity
                         </div>
-                        <input type="number" class="capacity-input" placeholder="Enter capacity...">
+                        <input type="number" class="capacity-input" placeholder="Enter capacity..." min="0">
                     </div>
                     <div class="create-event-btn-container">
                         <button class="create-event-btn">+ Create Event</button>
                     </div>
                 </div>
             </div>
-        
-            
-           
         </section>    
         <script src="{% static 'js/eventcreation.js' %}"></script>
         

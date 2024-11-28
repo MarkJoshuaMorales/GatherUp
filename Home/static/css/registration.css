@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600");
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&display=swap");
 
 html, body {
     height: 100%; 
@@ -8,95 +7,6 @@ html, body {
     
 }
 
-.header_area {
-    background-color: #f8f9fa;
-    font-family: "Roboto", sans-serif;
-    padding: 10px 0;
-    position: fixed; 
-    top: 0;
-    width: 100%;
-    z-index: 9999; 
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
-}
-
-
-body {
-    padding-top: 70px; 
-}
-
-.main_menu .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-
-
-.logo-container img {
-    margin-right: 10px; 
-    margin-left: 80px;
-      
-}
-
-.navbar-nav {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    margin-right: 80px;
-    
-}
-
-.navbar-nav .nav-item .nav-link {
-    font-size: 16px;
-    color: gray;
-    text-decoration: none;
-    padding: 8px 16px;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    border-radius: 5px;
-    
-}
-
-
-.navbar-nav .nav-item + .nav-item {
-    margin-left: 15px;
-}
-
-
-.navbar-nav .nav-item .nav-link:hover {
-    background-color: darkblue;
-    color: white;
-}
-
-
-.login-btn {
-    display: flex;
-    align-items: center;
-    font-family: "Oswald", sans-serif;
-}
-
-
-.login-btn i {
-    margin-right: 8px; 
-}
-
-
-.sign-up-btn {
-    background-color: lightgray;
-    color: darkblue;
-    font-family: "Oswald", sans-serif;
-}
-
-.sign-up-btn:hover {
-    background-color: darkblue;
-    color: white;
-}
 
 /*registration section */
 
@@ -104,17 +14,24 @@ body {
     display: flex;
     height: 100vh;
     justify-content: flex-start; 
-    font-family: "Oswald", sans-serif;
+    font-family: "Nunito", sans-serif;
+}
+
+.register-form-container .inner-container {
+    margin: 0 auto; 
+    padding: 10px; 
+    margin-left: 44px;
+    margin-right: 44px;
 }
 
 .register-form-container {
     flex: 1;
-    width: 330px;
+    width: 610px;
     margin-left: 70px;
-    margin-top: 60px;
+    margin-top: 70px;
     background-color: white;
     border-radius: 10px;
-    padding: 80px;
+    padding: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     align-self: center;
 }
@@ -135,7 +52,7 @@ body {
 
 .register-form-container input {
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -148,6 +65,7 @@ body {
 
 .password-field, .confirm-password-field {
     flex: 1;
+   
 }
 
 .password-field {
@@ -156,39 +74,41 @@ body {
 
 
 .signup-btn {
-    width: 100%;
+    width: 67%;
     padding: 15px;
     margin-top: 20px;
-    background-color: darkblue;
+    background-color: #315098;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 15px;
     cursor: pointer;
     font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s ease;
-    font-family: "Oswald", sans-serif;
+    font-family: "Nunito", sans-serif;
+    margin-left: 100px;
 }
 
 .signup-btn:hover {
-    background-color: slateblue;
+    background-color: darkblue;
 }
 
 
 .google-signup-btn {
-    width: 100%;
+    width: 67%;
     padding: 15px;
     border: 1px solid #000000;
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: white;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "Oswald", sans-serif;
+    font-family: "Nunito", sans-serif;
     font-size: 15px;
+    margin-left: 100px;
 }
 
 .google-signup-btn img {
@@ -214,4 +134,26 @@ body {
 .or-separator p {
     color: gray;
     margin: 0;
+}
+
+.login-option {
+    margin-top: 25px;
+    text-align: center;
+    font-family: "Nunito", sans-serif;
+}
+
+
+.login-option a {
+    color: #8CA8BE;
+    text-decoration: none;
+}
+
+.password-guideline {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: gray;
+    text-align: left;
+    font-family: "Nunito", sans-serif;
+    line-height: 1.5;
 }

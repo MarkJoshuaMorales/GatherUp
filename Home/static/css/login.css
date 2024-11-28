@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600");
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,500");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&display=swap");
 
 html, body {
     height: 100%; 
@@ -8,116 +7,31 @@ html, body {
     
 }
 
-.header_area {
-    background-color: #f8f9fa;
-    font-family: "Roboto", sans-serif;
-    padding: 10px 0;
-    position: fixed; 
-    top: 0;
-    width: 100%;
-    z-index: 9999; 
-    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
-}
-
-
-body {
-    padding-top: 70px;     
-}
-
-.main_menu .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-
-
-.logo-container img {
-    margin-right: 10px; 
-    margin-left: 80px;
-      
-}
-
-.navbar-nav {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    margin-right: 80px;
-    
-}
-
-/* Default styles for Log in and Sign up */
-.navbar-nav .nav-item .nav-link {
-    font-size: 16px;
-    color: gray;
-    text-decoration: none;
-    padding: 8px 16px;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    border-radius: 5px;
-    
-}
-
-
-.navbar-nav .nav-item + .nav-item {
-    margin-left: 15px;
-}
-
-
-.navbar-nav .nav-item .nav-link:hover {
-    background-color: darkblue;
-    color: white;
-}
-
-
-.login-btn {
-    display: flex;
-    align-items: center;
-    font-family: "Oswald", sans-serif;
-}
-
-
-.login-btn i {
-    margin-right: 8px; 
-}
-
-
-.sign-up-btn {
-    background-color: lightgray;
-    color: darkblue;
-    font-family: "Oswald", sans-serif;
-}
-
-.sign-up-btn:hover {
-    background-color: darkblue;
-    color: white;
-}
-
-
 /* Login section */
 .login-section {
     display: flex;
     height: 100vh;    
     justify-content: flex-end; 
-    font-family: "Oswald", sans-serif;
+    font-family: "Nunito", sans-serif;
 }
 
 .login-form-container {
     flex: 1;  
-    width: 300px;
-    margin-right: 70px; 
-    margin-top: 60px;
+    width: 610px;
+    margin-right: 60px; 
+    margin-top: 100px;
     background-color: white;
     border-radius: 10px;
-    padding: 80px;
+    padding: 20px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     align-self: center; 
+}
+
+.login-form-container .inner-container {
+    margin: 0 auto; 
+    padding: 20px; 
+    margin-left: 44px;
+    margin-right: 44px;
 }
 
 .login-form-container h1 {
@@ -144,22 +58,23 @@ body {
 
 
 .login-form-container .login-btn {
-    width: 100%;
+    width: 67%;
     padding: 15px;
-    background-color: darkblue; 
+    background-color: #315098; 
     color: white; 
     border: none;
-    border-radius: 10px;
+    border-radius: 15px;
     cursor: pointer;
     font-size: 16px;
     display: flex; 
     align-items: center; 
     justify-content: center; 
     transition: background-color 0.3s ease; 
+    margin-left: 70px;
 }
 
 .login-form-container .login-btn:hover {
-    background-color: slateblue; 
+    background-color: darkblue; 
 }
 
 .signup-option {
@@ -169,7 +84,7 @@ body {
 
 
 .signup-option a {
-    color: darkblue;
+    color: #8CA8BE;
     text-decoration: none;
 }
 
@@ -194,20 +109,36 @@ body {
 }
 
 .google-login-btn {
-    width: 100%;
+    width: 67%;
     padding: 15px;
     border: 1px solid #000000;
-    border-radius: 10px;
+    border-radius: 15px;
     background-color: white;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: "Oswald", sans-serif;
+    font-family: "Nunito", sans-serif;
     font-size: 15px;
+    margin-left: 70px;
 }
 
 .google-login-btn i {
     margin-right: 10px;
     color: #DB4437; 
+}
+
+.forgot-password {
+    margin-bottom: 15px; 
+}
+
+.forgot-password a {
+    font-size: 14px;
+    color: #8CA8BE;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
 }

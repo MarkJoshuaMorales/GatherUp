@@ -1,3 +1,5 @@
+<!-- Template for when there are Upcoming Events  -->
+
 <!DOCTYPE html>
 <html lang="en">
     {% load static %}
@@ -7,7 +9,7 @@
         <title>GatherUp</title>
         <link rel="icon" href="{% static 'img/LogoVer2.png' %}" type="image/png">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+        <link rel="stylesheet" href="{% static 'css/dashboard2.css' %}">
     </head>
     <body>
         <header class="header_area">            
@@ -67,17 +69,143 @@
             <div class="upcoming-events">
                 <div class="left-text">
                     <h2>Upcoming Events</h2>
-                </div>
-                <div class="middle-text">
-                    <h3 style="color: #8CA8BE;">No Upcoming Events</h3>
-                    <p>You have no upcoming events. Why not create one?</p>
-                </div>
-                <div class="button-container">
-                    <a href="/user_eventcreation">
-                        <button class="create-event-btn">+ Create Event</button>
-                    </a>
-                </div>
+                </div>                
             </div>
+            <div class="previous-events-content">
+                <!-- First Row -->
+                <div class="event-container">
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/100" alt="Event Image">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-left">
+                            <div class="event-month">DEC</div>
+                            <div class="event-day">09</div>
+                        </div>
+                        <div class="event-right">
+                            <div class="event-title">Seventeen Meet-and-Greet</div>
+                            <div class="event-host">By Host</div>
+                            <div class="event-time">6:30 PM - 9:30 PM</div>
+                            <div class="event-location">Intramuros, Manila</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-container">
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/100" alt="Event Image">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-left">
+                            <div class="event-month">DEC</div>
+                            <div class="event-day">09</div>
+                        </div>
+                        <div class="event-right">
+                            <div class="event-title">Seventeen Meet-and-Greet</div>
+                            <div class="event-host">By Host</div>
+                            <div class="event-time">6:30 PM - 9:30 PM</div>
+                            <div class="event-location">Intramuros, Manila</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-container">
+                    <div class="image-container">
+                        <img src="https://via.placeholder.com/100" alt="Event Image">
+                    </div>
+                    <div class="event-content">
+                        <div class="event-left">
+                            <div class="event-month">DEC</div>
+                            <div class="event-day">09</div>
+                        </div>
+                        <div class="event-right">
+                            <div class="event-title">Seventeen Meet-and-Greet</div>
+                            <div class="event-host">By Host</div>
+                            <div class="event-time">6:30 PM - 9:30 PM</div>
+                            <div class="event-location">Intramuros, Manila</div>
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Second Row -->
+                <div class="event-container">
+                     <div class="image-container">
+                     <img src="https://via.placeholder.com/100" alt="Event Image">
+                </div>
+                 <div class="event-content">
+                      <div class="event-left">
+                      <div class="event-month">DEC</div>
+                      <div class="event-day">10</div>
+                 </div>
+                 <div class="event-right">
+                    <div class="event-title">K-Pop Fan Meet</div>
+                    <div class="event-host">By Host</div>
+                    <div class="event-time">7:00 PM - 8:30 PM</div>
+                   <div class="event-location">Makati, Manila</div>
+               </div>
+             </div>
+           </div>
+               <div class="event-container">
+                   <div class="image-container">
+                   <img src="https://via.placeholder.com/100" alt="Event Image">
+            </div>
+               <div class="event-content">
+                    <div class="event-left">
+                    <div class="event-month">DEC</div>
+                    <div class="event-day">11</div>
+            </div>
+            <div class="event-right">
+              <div class="event-title">Music Festival</div>
+              <div class="event-host">By Host</div>
+              <div class="event-time">5:00 PM - 11:00 PM</div>
+              <div class="event-location">BGC, Taguig</div>
+            </div>
+           </div>
+         </div>
+         <div class="event-container">
+             <div class="image-container">
+              <img src="https://via.placeholder.com/100" alt="Event Image">
+       </div>
+         <div class="event-content">
+           <div class="event-left">
+              <div class="event-month">DEC</div>
+              <div class="event-day">12</div>
+          </div>
+           <div class="event-right">
+              <div class="event-title">Food Bazaar</div>
+              <div class="event-host">By Host</div>
+              <div class="event-time">3:00 PM - 8:00 PM</div>
+              <div class="event-location">Quezon City</div>
+          </div>
+       </div>
+     </div>
+    </div>
+
+    <div class="see-more-container">
+        <button class="see-more-btn">See More</button>
+    </div>
+
+    <!-- Create Event Section -->
+<div class="create-event-container">
+    <div class="create-event-content">
+        <!-- Left: Image -->
+        <div class="event-image">
+            <img src="{% static 'img/dashboard.png' %}" alt="Event Image">
+        </div>
+        <!-- Middle: Text Content -->
+        <div class="event-text">
+            <h3>Create an Event with GatherUp</h3>
+            <p>Got a show, activity, or a great experience?</p>
+        </div>
+        <!-- Right: Create Event Button -->
+        <div class="event-button">
+            <a href="/user_eventcreation">
+                <button class="create-event-button">+ Create Event</button>
+            </a>
+        </div>
+    </div>
+</div>
+
 
             <div class="previous-events">
                 <div class="left-text">

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>GatherUp</title>
         <link rel="icon" href="{% static 'img/LogoVer2.png' %}" type="image/png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="{% static 'css/notifications.css' %}">
     </head>
     <body>
@@ -15,10 +15,10 @@
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="container d-flex align-items-center justify-content-between">
                         <div class="logo-container d-flex align-items-center">
-                            <img style="width: 10%;" src="{% static 'img/Logo.png' %}" class="thumbnail">
+                            <img style="width: 8%;" src="{% static 'img/Logo.png' %}" class="thumbnail">
                             <a class="navbar-brand logo_h" href="#" style="text-decoration: none;">
-                                <span style="padding-left:10px;color: black; font-size: 180%; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-                                    <span style="color: darkblue;">GatherUp</span>
+                                <span style="padding-left:10px; color: black; font-size: 180%; font-family: 'Nunito', sans-serif; font-weight: 1000;"> 
+                                    <span style="color: #315098;">GatherUp</span>
                                 </span>
                             </a>
                         </div>
@@ -29,19 +29,19 @@
                                 
                                 <li class="nav-item">
                                     <a class="nav-link notification-icon" href="/user_notifications">
-                                        <i class="fas fa-bell"></i>
+                                        <i class="bi bi-bell"></i>
                                     </a>
                                 </li>
         
                                 <li class="nav-item">
                                     <a class="nav-link user-icon" href="/user_profile">
-                                        <i class="fas fa-user-circle"></i>
+                                        <i class="bi bi-person-circle"></i>
                                     </a>
                                 </li>
         
                                 <li class="nav-item">
                                     <a class="nav-link logout-btn" href="/">
-                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                        <i class="bi bi-box-arrow-right"></i> Logout
                                     </a>
                                 </li>
                                 

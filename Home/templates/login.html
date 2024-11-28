@@ -8,55 +8,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>GatherUp</title>
         <link rel="icon" href="{% static 'img/LogoVer2.png' %}" type="image/png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="{% static 'css/login.css' %}">
     </head>
     <body>
-      <header class="header_area">            
-          <div class="main_menu">
-              <nav class="navbar navbar-expand-lg navbar-light">
-                  <div class="container d-flex align-items-center justify-content-between">
-                      <!-- Logo and Text -->
-                      <div class="logo-container d-flex align-items-center">
-                          <img style="width: 10%;" src="{% static 'img/Logo.png' %}" class="thumbnail">
-                          <a class="navbar-brand logo_h" href="#" style="text-decoration: none;">
-                           <span style="padding-left:10px;color: black; font-size: 180%; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-                               <span style="color: darkblue;">GatherUp</span>
-                           </span>
-                       </a>
-                      </div>
-                      
-                      <div class="navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ml-auto">
-                            
-                            <li class="nav-item">
-                                <a class="nav-link login-btn" href="#">
-                                    <i class="fas fa-door-open"></i> Log in
-                                </a>
-                            </li>
-                            
-                            
-                            <li class="nav-item">
-                                <a class="nav-link sign-up-btn" href="/user_registration">
-                                    Sign up
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                  </div>
-              </nav>
-          </div>
-      </header>
+        
+     
 
-      <section class="login-section" style="position: relative; background-image: url('{% static 'img/Login.png' %}'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 115vh; margin-top: 0px; ">
+      <section class="login-section" style="position: relative; background-image: url('{% static 'img/Login.png' %}'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh; margin-top: 0px; ">
          <div class="login-container" >             
              <div class="login-image" >         
                      
              <div class="login-form-container" >
+                <div class="inner-container">
                  <h1>Log in</h1>
                  <form action="" method="POST">
                      {% csrf_token %}
-                     {{ form.as_p }}                      
+                     
+                     <label for="name">Email Address</label>
+                     <input type="text" id="name" name="name" placeholder="" required>
+                     
+                     
+                     <label for="email">Password</label>
+                     <input type="email" id="email" name="email" placeholder="" required>
+                     
+                     <div class="forgot-password">
+                        <a href="/password_reset">Forgot Password?</a>
+                    </div>
+                     
                      <button type="submit" class="login-btn">Log in</button>
                  </form>
 
@@ -64,17 +43,9 @@
                      <p>Don't have an account? <a href="/user_registration">Sign Up</a></p>
                  </div>
 
-                 <div class="or-separator">
-                     <span></span>
-                     <p>OR</p>
-                     <span></span>
-                 </div>
-
-                 <button class="google-login-btn">
-                    <img src="{% static 'img/google-logo.png' %}" alt="Google Logo" style="width: 20px; height: 20px; margin-right: 10px;">
-                    Continue with Google
-                 </button>
+                 
              </div>
+            </div>
          </div>
       
      </section>

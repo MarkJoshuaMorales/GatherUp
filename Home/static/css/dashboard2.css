@@ -174,42 +174,6 @@ html, body {
     margin-left: 110px;
 }
 
-.middle-text {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.middle-text h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.middle-text p {
-    font-size: 1rem;
-    color: #555;
-}
-
-.button-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.create-event-btn {
-    font-family: "Nunito", sans-serif;
-    background-color: #315098;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.create-event-btn:hover {    
-    background-color: #003366;
-}
 
 
 .previous-events {
@@ -294,8 +258,7 @@ html, body {
 .event-month {
     font-size: 18px;
     font-weight: bold;
-    color: #8CA8BE; 
-   
+    color: #84c0ff; 
 }
 
 .event-day {
@@ -313,7 +276,7 @@ html, body {
 }
 
 .event-title {
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: bold;
     color: black;
 }
@@ -415,3 +378,72 @@ html, body {
     color: white;
 }
 
+
+
+
+
+/* Create Event Section */
+.create-event-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-top: 40px;
+    background-color: #EBEDF6; 
+    border-radius: 10px;
+
+}
+
+.create-event-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 900px;
+    width: 100%;
+    gap: 0px;
+}
+
+.event-image img {
+    max-width: 220px;
+    
+}
+
+.event-text {
+    flex: 1;
+    text-align: left;
+    font-family: "Nunito", sans-serif;
+}
+
+.event-text h3 {
+    margin: 0;
+    font-size: 25px;
+    color: #315098;
+}
+
+.event-text p {
+    margin: 5px 0 0;
+    font-size: 18px;
+    color: #315098;
+}
+
+.event-button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.create-event-button {
+    background-color: darkblue; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: "Nunito", sans-serif;
+}
+
+.create-event-button:hover {
+    background-color: #003366; /
+}

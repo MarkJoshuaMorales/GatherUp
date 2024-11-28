@@ -10,5 +10,8 @@ urlpatterns = [
     path('user_eventcreation/', views.eventcreation, name='user_eventcreation'),
     path('user_userregistration/', views.userregistration, name='user_userregistration'),
     path('user_notifications/', views.notifications, name='user_notifications'),
+    path('user_dashboard2/', views.dashboard2, name='user_dashboard2'),
+    path('user_userregistration2/', views.userregistration2, name='user_userregistration2'),
+    
 ]
 
