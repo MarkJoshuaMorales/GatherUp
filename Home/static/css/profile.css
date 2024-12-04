@@ -104,7 +104,7 @@ body {
 
 .profile-title {
     color: #315098;
-    
+    font-weight: bold;    
     font-size: 26px;
     margin-bottom: 20px;
 }
@@ -191,6 +191,7 @@ body {
 .settings-title {
     color: #315098;    
     font-size: 22px;
+    font-weight: bolder;
     margin-bottom: 20px;
 }
 
@@ -200,7 +201,7 @@ body {
 
 .form-group label {
     display: block;
-    font-weight: bold;
+    font-weight: bolder;
     margin-bottom: 5px;
 }
 

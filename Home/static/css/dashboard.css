@@ -313,7 +313,7 @@ html, body {
 }
 
 .event-title {
-    font-size: 18px;
+    font-size: 19px;
     font-weight: bold;
     color: black;
 }
@@ -324,8 +324,7 @@ html, body {
 }
 
 .event-time {
-    font-size: 0.9rem;
-   
+    font-size: 0.9rem;   
     color: #333;
 }
 

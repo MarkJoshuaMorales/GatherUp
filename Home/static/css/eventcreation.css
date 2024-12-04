@@ -139,11 +139,15 @@ html, body {
     border: 2px dashed #cccccc;
     border-radius: 10px;
     display: flex;
+    
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
     color: #888888;
+    
 }
+
+
 
 .upload-photo-container {
     width: 100%;
@@ -208,6 +212,20 @@ html, body {
 
 .item-header i {
     color: #221874; 
+}
+
+.location-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.location-input:focus {
+    border-color: #221874;
 }
 
 .date-time-input,
