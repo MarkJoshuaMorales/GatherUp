@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
 
 html, body {
     height: 100%; 
@@ -178,6 +178,11 @@ html, body {
     margin-left: 5px;
 }
 
+.highlight {
+    color: #315098; 
+    font-weight: bold; 
+}
+
 .notification-card .content .time {
     font-size: 0.9em;
     color: lightgray;
@@ -185,10 +190,10 @@ html, body {
 }
 
 .notification-card.unread {
-    background-color: #edf5fb; /* Light blue for unread messages */
+    background-color: #edf5fb; 
     cursor: pointer;
 }
 
 .notification-card.unread:hover {
-    background-color: #edf5fb; /* Slightly darker blue on hover */
+    background-color: #edf5fb; 
 }
