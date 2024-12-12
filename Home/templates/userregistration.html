@@ -53,7 +53,7 @@
 
         <section class="main-section">
             <div class="image-container">
-                <img src="{% static 'img/Venue.jpg' %}" alt="Event Image">
+                <img src="{{ event.event_image.url }}" alt="Event Image">
             </div>
         
 
@@ -61,18 +61,15 @@
             <div class="content-container">
                 <!-- Left Content -->
                 <div class="left-content">
-                    <div class="event-title">Sound of Music</div>
+                    <div class="event-title">{{ event.event_name }}</div>
                     <div class="icon-text">
-                        <i class="bi bi-calendar3"></i> Mon, September 03
+                        <i class="bi bi-calendar3"></i> {{ event.event_start|date:"M" }} {{ event.event_start|date:"d" }}
                     </div>
                     <div class="icon-text1">
-                         6:00AM-10:00AM
+                        {{ event.event_start|date:"g:i A" }} - {{ event.event_end|date:"g:i A" }}
                     </div>
                     <div class="icon-text">
-                        <i class="bi bi-geo-alt"></i> Pamantasan ng Lungsod ng Maynila
-                    </div>
-                    <div class="icon-text1">
-                        Intramuros, Manila
+                        <i class="bi bi-geo-alt"></i> {{ event.event_location }}
                     </div>
                 </div>
 
@@ -85,18 +82,18 @@
                         </div>
                         <div class="user-icon">
                             <img src="{% static 'img/Joshua.jpg' %}" alt="Profile Picture" class="profile-picture" style="height: 30px; width: 30px;" >
-                            <span>Mark</span>
+                            <span>{{ event.created_by }}</span>
                         </div>
                     </div>
                     <div class="attendees">
                         <div class="attendees-container">
-                            <div class="text-left">100 attendees</div>
+                            <div class="text-left">{{event.num_attendees}} attendees</div>
                             <div class="gray-line"></div>
                         </div>
                     </div>
                 </div>  
             </div>              
- 
+
             <div class="registration-container" id="registration-container">
                 <div class="registration-header">Registration</div>
                 <div class="gray-line"></div>
@@ -105,96 +102,89 @@
                 </div>
                 <div class="registration-details">
                     <div class="registrant-info">
-                        <img src="{% static 'img/Joshua.jpg' %}" alt="Profile Picture" class="profile-picture"  style="height: 30px; width: 30px;">
-                        Mark Morales
+                        <!-- Dynamically load the user's profile picture and name -->
+                        <img src="{% static 'img/Joshua.jpg' %}" alt="Profile Picture" class="profile-picture" style="height: 30px; width: 30px;">
+                        {{ user.username }} <!-- Dynamically display logged-in user's name -->
                     </div>
-                    <button class="register-button" onclick="changeContent()">
-                        <i class="bi bi-ticket-detailed"></i> Register
-                    </button>
+                    <!-- Register button that triggers the registration process -->
+                    {% if registered %}
+                    <p>You are already registered for this event.</p>
+                    {% else %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="register-button">
+                            <i class="bi bi-ticket-detailed"></i> Register
+                        </button>
+                    </form>
+                    {% endif %}
                 </div>
             </div>
             
-            <!-- Script for the container -->
-            <script>
-                function changeContent() {
-                    
-                    const registrationContainer = document.getElementById('registration-container');
-                    
-                    
-                    registrationContainer.innerHTML = '';
-            
-                    
-                    const logo = document.createElement('img');
-                    logo.src = '{% static "img/BlackLogo.png" %}';  
-                    logo.alt = 'Event Logo';
-                    logo.style.width = '50px';  
-                    logo.style.margin = '0 auto';
-                    logo.style.display = 'left';
-            
-                    const thankYouText = document.createElement('p');
-                    thankYouText.textContent = 'Thank you for Joining!';
-                    thankYouText.style.fontSize = '30px';
-                    thankYouText.style.textAlign = 'left';
-                    thankYouText.style.marginTop = '10px';
-            
-                    const messageText = document.createElement('p');
-                    messageText.textContent = 'We hope you enjoyed the event.';
-                    messageText.style.fontSize = '18px';
-                    messageText.style.textAlign = 'left';
-                    messageText.style.marginTop = '0px';
-            
-                    // Append the new elements
-                    registrationContainer.appendChild(logo);
-                    registrationContainer.appendChild(thankYouText);
-                    registrationContainer.appendChild(messageText);
-                }
-            </script>
 
             <!-- About Event Section -->
-    <div class="about-event-container">
-        <div class="about-event-header">About the Event</div>
-        <div class="gray-line"></div>
-        <div class="about-event-description">
-            Whenever I see girls and boys selling lanterns on the streets, I remember the Child
-            in the manger, as he sleeps. Wherever there are people giving gifts, exchanging cards,
-            I believe that Christmas is truly in their hearts.
+            <div class="about-event-container">
+                <div class="about-event-header">About the Event</div>
+                <div class="gray-line"></div>
+                <div class="about-event-description">
+                    {{ event.event_description }}
+                </div>
+            </div>
 
-            Let's light our Christmas trees for a bright tomorrow, where nations are at peace
-            and all are one in God.
+            <!-- Location Section -->
+            <div class="location-container">
+                <div class="location-header">Location</div>
+                <div class="gray-line"></div>
+                <!-- Location Text -->
+                <div class="location-name">{{ event.event_location }}</div>
+                
+                <div class="map-container">
+                    <iframe
+                        width="100%"
+                        height="350"
+                        frameborder="0"
+                        style="border:0;"
+                        src="https://www.openstreetmap.org/export/embed.html?bbox={{ longitude }},{{ latitude }}&layer=mapnik&marker={{ latitude }},{{ longitude }}"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
 
-            Let's sing Merry Christmas and a happy holiday. This season may we never forget
-            the love we have for Jesus. Let Him be the one to guide us as another new year starts,
-            and may the spirit of Christmas be always in our hearts.
-
-            In every prayer and every song, the community unites, celebrating the birth
-            of our Savior, Jesus Christ. Let love, like that starlight on that first Christmas morn,
-            lead us back to the manger, where Christ the Child was born.
-        </div>
-    </div>
-
-    <!-- Location Section -->
-    <div class="location-container">
-        <div class="location-header">Location</div>
-        <div class="gray-line"></div>
-        <!-- Location Text -->
-        <div class="location-name">Pamantasan ng Lungsod ng Maynila</div>
-        <div class="location-subtext">Intramuros, Manila</div>
+        <!-- Script for the container -->
+        <script>
+            function changeContent() {
+                
+                const registrationContainer = document.getElementById('registration-container');
+                
+                
+                registrationContainer.innerHTML = '';
         
-        <div class="map-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1930.736013064427!2d120.9737151!3d14.5879216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397ca13d8a45617%3A0xe9db3d2c4f54a1c1!2sPamantasan%20ng%20Lungsod%20ng%20Maynila!5e0!3m2!1sen!2sph!4v1632891071701!5m2!1sen!2sph" 
-                width="100%" 
-                height="350" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe>
-        </div>
-    </div>
-
-            </section>
-           
-
+                
+                const logo = document.createElement('img');
+                logo.src = '{% static "img/BlackLogo.png" %}';  
+                logo.alt = 'Event Logo';
+                logo.style.width = '50px';  
+                logo.style.margin = '0 auto';
+                logo.style.display = 'left';
+        
+                const thankYouText = document.createElement('p');
+                thankYouText.textContent = 'Thank you for Joining!';
+                thankYouText.style.fontSize = '30px';
+                thankYouText.style.textAlign = 'left';
+                thankYouText.style.marginTop = '10px';
+        
+                const messageText = document.createElement('p');
+                messageText.textContent = 'We hope you enjoyed the event.';
+                messageText.style.fontSize = '18px';
+                messageText.style.textAlign = 'left';
+                messageText.style.marginTop = '0px';
+        
+                // Append the new elements
+                registrationContainer.appendChild(logo);
+                registrationContainer.appendChild(thankYouText);
+                registrationContainer.appendChild(messageText);
+            }
+        </script>
 
         
     </body>

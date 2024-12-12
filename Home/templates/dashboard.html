@@ -16,7 +16,7 @@
                     <div class="container d-flex align-items-center justify-content-between">
                         <div class="logo-container d-flex align-items-center">
                             <img style="width: 8%;" src="{% static 'img/Logo.png' %}" class="thumbnail">
-                            <a class="navbar-brand logo_h" href="#" style="text-decoration: none;">
+                            <a class="navbar-brand logo_h" href="{% url 'user_dashboard' %}" style="text-decoration: none;">
                                 <span style="padding-left:10px; color: black; font-size: 180%; font-family: 'Nunito', sans-serif; font-weight: 1000;">
                                     <span style="color: #315098;">GatherUp</span>
                                 </span>
@@ -27,19 +27,19 @@
                             <ul class="navbar-nav ml-auto">
                                 
                                 <li class="nav-item">
-                                    <a class="nav-link notification-icon" href="/user_notifications">
+                                    <a class="nav-link notification-icon" href="{% url 'user_notifications' %}">
                                         <i class="bi bi-bell"></i>
                                     </a>
                                 </li>
         
                                 <li class="nav-item">
-                                    <a class="nav-link user-icon" href="/user_profile">
+                                    <a class="nav-link user-icon" href="{% url 'user_profile' %}">
                                         <i class="bi bi-person-circle"></i>
                                     </a>
                                 </li>
         
                                 <li class="nav-item">
-                                    <a class="nav-link logout-btn" href="/">
+                                    <a class="nav-link logout-btn" href="{% url 'login' %}?logout=true">
                                         <i class="bi bi-box-arrow-right"></i> Logout
                                     </a>
                                 </li>                             
@@ -55,11 +55,15 @@
             <div class="white-box">
                 <img src="{% static 'img/Generic avatar.png' %}" alt="Profile Picture" class="profile-picture">
                 <div class="text-info">
-                    <span class="greeting-text"><b>Hi, Mark!</b></span>
+                    {% if user.is_authenticated %}
+                        <span class="greeting-text"><b>Hi, {{ user.username }}!</b></span>
+                    {% else %}
+                        <span class="greeting-text"><b>Hi, user!</b></span>
+                    {% endif %}
                     <div class="events-info">
-                        <i class="bi bi-mic"></i> Events Hosted: 0
+                        <i class="bi bi-mic"></i> Events Hosted: {{ events_hosted }}
                         <span class="events-separator"></span> 
-                        <i class="bi bi-ticket-perforated"></i> Events Attended: 0
+                        <i class="bi bi-ticket-perforated"></i> Events Attended: {{ events_attended }}
                     </div>
                 </div>
             </div>
@@ -68,16 +72,50 @@
                 <div class="left-text">
                     <h2>Upcoming Events</h2>
                 </div>
-                <div class="middle-text">
-                    <h3 style="color: #8CA8BE;">No Upcoming Events</h3>
-                    <p>You have no upcoming events. Why not create one?</p>
-                </div>
-                <div class="button-container">
-                    <a href="/user_eventcreation">
-                        <button class="create-event-btn">+ Create Event</button>
-                    </a>
-                </div>
             </div>
+                {% if upcoming_events %}
+                    <div class="upcoming-events-display">
+                        {% for event in upcoming_events %}
+                        <a href="{% url 'user_userregistration' event.pk %}">
+                            <div class="event-container">
+                                <div class="image-container">
+                                    <img src="{{ event.event_image.url }}" alt="Event Image">
+                                </div>
+                                <div class="event-content">
+                                    <div class="event-left">
+                                        <div class="event-month">{{ event.event_start|date:"M" }}</div>
+                                        <div class="event-day">{{ event.event_start|date:"d" }}</div>
+                                    </div>
+                                    <div class="event-right">
+                                        <div class="event-title">{{ event.event_name }}</div>
+                                        <div class="event-host">By {{ event.created_by }}</div>
+                                        <div class="event-time">{{ event.event_start|date:"g:i A" }} - {{ event.event_end|date:"g:i A" }}</div>
+                                        <div class="event-location">{{ event.event_location }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="middle-text">
+                        <h3 style="color: #8CA8BE;">No Upcoming Events</h3>
+                        <p>You have no upcoming events. Why not create one?</p>
+                    </div>
+                    <div class="button-container">
+                        <a href="{% url 'user_eventcreation' %}">
+                            <button class="create-event-btn">+ Create Event</button>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+
+            {% if registered_events > 6 %}
+                <div class="see-more-container">
+                    <button class="see-more-btn">See More</button>
+                </div>
+            {% endif%}
+
 
             <div class="previous-events">
                 <div class="left-text">
@@ -85,119 +123,44 @@
                 </div>
             </div>    
 
-            <div class="previous-events-content">
-                <!-- First Row -->
-                <div class="event-container">
-                    <div class="image-container">
-                        <img src="{% static 'img/Rectangle 2.png' %}" alt="Event Image">
-                    </div>
-                    <div class="event-content">
-                        <div class="event-left">
-                            <div class="event-month">DEC</div>
-                            <div class="event-day">09</div>
+            {% if past_events %}
+                <div class="upcoming-events-display">
+                    {% for event in past_events %}
+                    <a href="{% url 'user_userregistration' event.pk %}">
+                        <div class="event-container">
+                            <div class="image-container">
+                                <img src="{{ event.event_image.url }}" alt="Event Image">
+                            </div>
+                            <div class="event-content">
+                                <div class="event-left">
+                                    <div class="event-month">{{ event.event_start|date:"M" }}</div>
+                                    <div class="event-day">{{ event.event_start|date:"d" }}</div>
+                                </div>
+                                <div class="event-right">
+                                    <div class="event-title">{{ event.event_name }}</div>
+                                    <div class="event-host">By {{ username }}</div>
+                                    <div class="event-time">{{ event.event_start|date:"g:i A" }} - {{ event.event_end|date:"g:i A" }}</div>
+                                    <div class="event-location">{{ event.event_location }}</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="event-right">
-                            <div class="event-title">Seventeen Meet-and-Greet</div>
-                            <div class="event-host">By Host</div>
-                            <div class="event-time">6:30 PM - 9:30 PM</div>
-                            <div class="event-location">Intramuros, Manila</div>
-                        </div>
-                    </div>
+                    </a>
+                    {% endfor %}
                 </div>
+            {% else %}
+                <div class="middle-text">
+                    <h3 style="color: #8CA8BE;">No Past Events</h3>
+                    <p>You have no past events</p>
+                </div>
+            {% endif %}
 
-                <div class="event-container">
-                    <div class="image-container">
-                        <img src="{% static 'img/Rectangle 2.png' %}" alt="Event Image">
-                    </div>
-                    <div class="event-content">
-                        <div class="event-left">
-                            <div class="event-month">DEC</div>
-                            <div class="event-day">09</div>
-                        </div>
-                        <div class="event-right">
-                            <div class="event-title">Seventeen Meet-and-Greet</div>
-                            <div class="event-host">By Host</div>
-                            <div class="event-time">6:30 PM - 9:30 PM</div>
-                            <div class="event-location">Intramuros, Manila</div>
-                        </div>
-                    </div>
+            {% if past_events_count > 6 %}
+                <div class="see-more-container">
+                    <button class="see-more-btn">See More</button>
                 </div>
+            {% endif%}
 
-                <div class="event-container">
-                    <div class="image-container">
-                        <img src="{% static 'img/Rectangle 2.png' %}" alt="Event Image">
-                    </div>
-                    <div class="event-content">
-                        <div class="event-left">
-                            <div class="event-month">DEC</div>
-                            <div class="event-day">09</div>
-                        </div>
-                        <div class="event-right">
-                            <div class="event-title">Seventeen Meet-and-Greet</div>
-                            <div class="event-host">By Host</div>
-                            <div class="event-time">6:30 PM - 9:30 PM</div>
-                            <div class="event-location">Intramuros, Manila</div>
-                        </div>
-                    </div>
-                </div>
-            
-                <!-- Second Row -->
-                <div class="event-container">
-                     <div class="image-container">
-                     <img src="{% static 'img/Rectangle 2.png' %}" alt="Event Image">
-                </div>
-                 <div class="event-content">
-                      <div class="event-left">
-                      <div class="event-month">DEC</div>
-                      <div class="event-day">10</div>
-                 </div>
-                 <div class="event-right">
-                    <div class="event-title">K-Pop Fan Meet</div>
-                    <div class="event-host">By Host</div>
-                    <div class="event-time">7:00 PM - 8:30 PM</div>
-                   <div class="event-location">Makati, Manila</div>
-               </div>
-             </div>
-           </div>
-               <div class="event-container">
-                   <div class="image-container">
-                   <img src="{% static 'img/Rectangle 2.png' %}" alt="Event Image">
-            </div>
-               <div class="event-content">
-                    <div class="event-left">
-                    <div class="event-month">DEC</div>
-                    <div class="event-day">11</div>
-            </div>
-            <div class="event-right">
-              <div class="event-title">Music Festival</div>
-              <div class="event-host">By Host</div>
-              <div class="event-time">5:00 PM - 11:00 PM</div>
-              <div class="event-location">BGC, Taguig</div>
-            </div>
-           </div>
-         </div>
-         <div class="event-container">
-             <div class="image-container">
-              <img src="{% static 'img/Rectangle 2.png' %}" alt="Event Image">
-       </div>
-         <div class="event-content">
-           <div class="event-left">
-              <div class="event-month">DEC</div>
-              <div class="event-day">12</div>
-          </div>
-           <div class="event-right">
-              <div class="event-title">Food Bazaar</div>
-              <div class="event-host">By Host</div>
-              <div class="event-time">3:00 PM - 8:00 PM</div>
-              <div class="event-location">Quezon City</div>
-          </div>
-       </div>
-     </div>
-    </div>
 
-            <div class="see-more-container">
-                <button class="see-more-btn">See More</button>
-            </div>
         
             
             <footer class="footer">

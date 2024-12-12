@@ -7,6 +7,10 @@ html, body {
     
 }
 
+a {
+    text-decoration: none;
+}
+
 .header_area {
     background-color: #f8f9fa;
     font-family: "Nunito", sans-serif;
@@ -158,8 +162,16 @@ html, body {
     align-items: center;
     margin-top: 30px;
     padding: 20px;
-    font-family: "Nunito", sans-serif;    
+    font-family: "Nunito", sans-serif;
  
+}
+
+.upcoming-events-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
 }
 
 .left-text {
@@ -260,7 +272,8 @@ html, body {
 }
 
 .image-container {
-    width: 100%; 
+    width: 340px;
+    height: 185px; 
     border-radius: 20px;
     overflow: hidden; 
     margin-bottom: 10px; 
@@ -295,7 +308,6 @@ html, body {
     font-size: 18px;
     font-weight: bold;
     color: #8CA8BE; 
-   
 }
 
 .event-day {
@@ -413,4 +425,3 @@ html, body {
     font-size: 0.9rem;
     color: white;
 }
-
