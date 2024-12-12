@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&display=swap");
+=======
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+>>>>>>> 22888e62d16f943bfe66b6993d6b8d67f7db578f
 
 html, body {
     height: 100%; 
@@ -7,6 +11,100 @@ html, body {
     
 }
 
+<<<<<<< HEAD
+=======
+.header_area {
+    background-color: #f8f9fa;
+    font-family: "Nunito", sans-serif;
+    padding: 10px 0;
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    z-index: 9999; 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+
+body {
+    padding-top: 70px;     
+}
+
+.main_menu .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+
+.logo-container img {
+    margin-right: 10px; 
+    margin-left: 80px;
+}
+
+.navbar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    margin-right: 80px;
+    
+}
+
+/* Default styles for Log in and Sign up */
+.navbar-nav .nav-item .nav-link {
+    font-size: 16px;
+    color: gray;
+    text-decoration: none;
+    padding: 8px 16px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    border-radius: 5px;
+    
+}
+
+
+.navbar-nav .nav-item + .nav-item {
+    margin-left: 15px;
+}
+
+
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: darkblue;
+    color: white;
+}
+
+
+.login-btn {
+    display: flex;
+    align-items: center;
+    font-family: "Nunito", sans-serif;
+}
+
+
+.login-btn i {
+    margin-right: 8px; 
+}
+
+
+.sign-up-btn {
+    background-color: lightgray;
+    color: darkblue;
+    font-family: "Nunito", sans-serif;
+}
+
+.sign-up-btn:hover {
+    background-color: darkblue;
+    color: white;
+}
+
+
+>>>>>>> 22888e62d16f943bfe66b6993d6b8d67f7db578f
 /* Login section */
 .login-section {
     display: flex;
@@ -18,8 +116,13 @@ html, body {
 .login-form-container {
     flex: 1;  
     width: 610px;
+<<<<<<< HEAD
     margin-right: 60px; 
     margin-top: 100px;
+=======
+    margin-right: 70px; 
+    margin-top: 60px;
+>>>>>>> 22888e62d16f943bfe66b6993d6b8d67f7db578f
     background-color: white;
     border-radius: 10px;
     padding: 20px;

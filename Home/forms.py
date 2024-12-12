@@ -26,6 +26,7 @@ class LoginForm(forms.Form):
 
 class EventForm(forms.ModelForm):
     class Meta:
+<<<<<<< HEAD
         model = Event
         fields = ['event_name', 'event_image', 'event_start', 'event_end', 'event_location', 'event_description', 'ticket_price', 'is_private', 'event_capacity']
         widgets = {
@@ -69,3 +70,7 @@ class EventForm(forms.ModelForm):
                 'class': 'switch-input'
             })
         }
+=======
+        model = SignUp
+        fields = '__all__'
+>>>>>>> 22888e62d16f943bfe66b6993d6b8d67f7db578f

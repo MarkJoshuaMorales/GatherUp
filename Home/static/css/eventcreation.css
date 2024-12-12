@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600&display=swap");
+=======
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+>>>>>>> 22888e62d16f943bfe66b6993d6b8d67f7db578f
 
 html, body {
     height: 100%; 
@@ -99,9 +103,12 @@ html, body {
     display: flex;
     justify-content: center;
     font-family: "Nunito", sans-serif;
+<<<<<<< HEAD
     margin-left: 70px;
     margin-right: 10px; 
     
+=======
+>>>>>>> 22888e62d16f943bfe66b6993d6b8d67f7db578f
 }
 
 .event-name-input {
@@ -317,9 +324,12 @@ hr {
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-family: "Nunito", sans-serif;
+<<<<<<< HEAD
     text-align: center; 
     white-space: nowrap;
     
+=======
+>>>>>>> 22888e62d16f943bfe66b6993d6b8d67f7db578f
 }
 
 .create-event-btn:hover {
