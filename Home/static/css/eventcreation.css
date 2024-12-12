@@ -121,67 +121,63 @@ html, body {
     width: 95%;
 }
 
+
 .left-box {
-    flex: 1;
-    margin-bottom: 800px;
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    background-color: #eaeaea;
-    border-radius: 10px;
-    padding: 20px;
-    gap: 10px; 
+    flex-direction: column;
+    align-items: center;
+    width: 1000%; /* Ensure it takes full width of the container */
+    margin-right: 20px; /* Add spacing if needed */
 }
+
 
 .image-box {
-    width: 100%;
-    height: 350px; 
-    border: 2px dashed #cccccc;
-    border-radius: 10px;
     display: flex;
-    
-    justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
-    color: #888888;
-    
+    justify-content: center;
+    height: 250px; /* Adjust height */
+    width: 250px;  /* Adjust width */
+    border: 2px dashed #cccccc; /* Dashed border */
+    border-radius: 15px; /* Smooth rounded corners */
+    color: #8CA8BE;
+    font-size: 1rem;
+    font-family: "Nunito", sans-serif;
+    background-color: #f0f0f0; /* Light gray background */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-bottom: 10px; /* Space between image box and button */
+    text-align: center; /* Center the text */
 }
 
-
-
 .upload-photo-container {
-    width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin-top: 10px;
 }
 
 .upload-photo-input {
-    display: none; 
+    display: none; /* Hide the file input */
 }
 
 .upload-photo-btn {
+    display: inline-block;
+    padding: 12px 25px; /* Adjust padding for button size */
+    color: #fff;
     background-color: #315098;
-    color: white;
-    padding: 10px 20px;
     border: none;
-    border-radius: 10px;
-    font-size: 1rem;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    font-family: "Nunito", sans-serif;
     text-align: center;
-    width: 90%; 
-    
-}
-
-.upload-photo-btn i {
-    font-size: 1rem; 
-    margin-right: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* Space between image box and button */
 }
 
 .upload-photo-btn:hover {
-    background-color: #3b34c1;
+    background-color: #253a6e; /* Darker shade on hover */
 }
+
 
 
 .right-box {
