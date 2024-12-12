@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class UserCredential(models.Model):
     username = models.CharField(max_length=150, unique=True)
@@ -12,7 +14,7 @@ class UserCredential(models.Model):
     
 class Event(models.Model):
     event_name = models.CharField(max_length=200)
-    event_image = models.ImageField(upload_to='events/', null=True, blank=True)
+    event_image = models.ImageField(upload_to='events/', null=True, blank=True, default='events/Rectangle 2.png')
     event_start= models.DateTimeField()
     event_end = models.DateTimeField()
     event_location = models.CharField(max_length=255)
@@ -42,5 +44,20 @@ class Registration(models.Model):
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField()
-    profile_pic = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
+    profile_pic = models.ImageField(upload_to='profile_pics/', null=True, blank=True, default='profile_pics/Generic avatar.png')
+
+class Notification(models.Model):
+    recipient = models.ForeignKey(User, on_delete=models.CASCADE, related_name="notifications")
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_read = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"Notification for {self.recipient.username}"
+
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+    instance.profile.save()

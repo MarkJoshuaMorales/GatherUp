@@ -167,11 +167,15 @@ a {
 }
 
 .upcoming-events-display {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px; 
+    justify-content: center; 
+    align-items: center;
+    margin-top: 20px;
+    width: 80%;
+    margin: 0 auto;
+    
 }
 
 .left-text {
@@ -204,7 +208,9 @@ a {
 .button-container {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 .create-event-btn {
@@ -424,4 +430,67 @@ a {
 .footer-copyright {
     font-size: 0.9rem;
     color: white;
+}
+
+
+.banner {
+    background-color: #EBEDF6;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.banner .create-event-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.banner .create-event-text {
+    text-align: left;
+    flex: 1;
+    padding-left: 20px;
+    color: #315098;
+}
+
+.banner .create-event-text h1 {
+    margin-bottom: 10px;
+    white-space: nowrap;
+}
+
+.banner .create-event-text p {
+    margin-top: 5px; 
+    white-space: nowrap;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px 150px 0 150px;
+}
+
+.create-event-banner-btn {
+    background-color: #315098; 
+    color: white;  
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: "Nunito", sans-serif;
+    text-align: center; 
+    white-space: nowrap;
+    padding: 10px 20px; 
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.banner-button-container {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    margin-top: 10px;
+    margin-left: 0;
 }

@@ -12,7 +12,11 @@ urlpatterns = [
     path('user_eventcreation/', views.eventcreation, name='user_eventcreation'),
     path('event/<int:pk>/', views.userregistration, name='user_userregistration'),
     path('user_notifications/', views.notifications, name='user_notifications'),
-    path('user_userregistration2/', views.userregistration2, name='user_userregistration2'), 
+    path('mark_notification_read/<int:notification_id>/', views.mark_notifications_as_read, name='mark_notification_read'),
+
     
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

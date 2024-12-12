@@ -16,8 +16,8 @@
                     <div class="container d-flex align-items-center justify-content-between">
                         <div class="logo-container d-flex align-items-center">
                             <img style="width: 8%;" src="{% static 'img/Logo.png' %}" class="thumbnail">
-                            <a class="navbar-brand logo_h" href="#" style="text-decoration: none;">
-                                <span style="padding-left:10px; color: black; font-size: 180%; font-family: 'Nunito', sans-serif; font-weight: 1000;"> 
+                            <a class="navbar-brand logo_h" href="{% url 'user_dashboard' %}" style="text-decoration: none;">
+                                <span style="padding-left:10px; color: black; font-size: 180%; font-family: 'Nunito', sans-serif; font-weight: 1000;">
                                     <span style="color: #315098;">GatherUp</span>
                                 </span>
                             </a>
@@ -26,25 +26,24 @@
                         <div class="navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav ml-auto">
                                 
-                                
                                 <li class="nav-item">
-                                    <a class="nav-link notification-icon" href="/user_notifications">
+                                    <a class="nav-link notification-icon" href="{% url 'user_notifications' %}">
                                         <i class="bi bi-bell"></i>
                                     </a>
                                 </li>
         
                                 <li class="nav-item">
-                                    <a class="nav-link user-icon" href="/user_profile">
+                                    <a class="nav-link user-icon" href="{% url 'user_profile' %}">
                                         <i class="bi bi-person-circle"></i>
                                     </a>
                                 </li>
         
                                 <li class="nav-item">
-                                    <a class="nav-link logout-btn" href="/">
+                                    <a class="nav-link logout-btn" href="{% url 'login' %}?logout=true">
                                         <i class="bi bi-box-arrow-right"></i> Logout
                                     </a>
-                                </li>
-                                
+                                </li>                             
+                                                                
                             </ul>
                         </div>
                     </div>
@@ -59,19 +58,37 @@
         
                 <!-- User Profile Information -->
                 <div class="profile-header">
-                    <div class="profile-picture">
-                        <img src="{% static 'img/Joshua.jpg' %}" alt="User Profile" class="user-avatar">
-                        <div class="profile-edit-icon">
-                            <i class="bi bi-camera-fill"></i>
-                        </div>
+                    <div class="profile-container">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {% if profile.profile_pic %}
+                                    <!-- Display the profile picture if it exists -->
+                                    <img src="{{ profile.profile_pic.url }}" alt="Profile Picture" style="width: 150px; height: 150px;" class="user-avatar">
+                                    <button type="submit" name="clear" value="1">Clear</button>
+                        
+                                {% else %}
+
+                                    <p>No profile picture uploaded yet.</p>
+                                    <input type="file" name="profile_pic" accept="image/*" class="form-control">
+                                {% endif %}
+                            </div>
+                            
+                            <!-- Only show the "Update Profile Picture" button if there's a file input (if no profile pic exists) -->
+                            {% if not profile.profile_pic %}
+                                <button type="submit" class="btn btn-primary">Update Profile Picture</button>
+                            {% endif %}
+                        </form>
+                                                
                     </div>
                     <div class="profile-info">
-                        <h2>Mark Joshua Morales</h2>
-                        <p><i class="bi bi-calendar3"></i> Joined in September 2024</p>
+                        <h2>@{{user.username}}</h2>
+                        <p><i class="bi bi-calendar3"></i> Joined in {{ date_joined|date:"F Y" }}
+                        </p>
                         <p>
-                            <i class="bi bi-mic"></i> Events Hosted:  0
+                            <i class="bi bi-mic"></i> Events Hosted:  {{ created_events_count }}
                             <span class="events-separator"></span> 
-                            <i class="bi bi-ticket-perforated"></i> Events Attended: 0
+                            <i class="bi bi-ticket-perforated"></i> Events Attended:  {{ registered_events_count }}
                         </p>
                     </div>
                 </div>
@@ -84,21 +101,20 @@
                     <h3 class="settings-title">Settings</h3>
                     <form>
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" value="Mark Joshua Morales" readonly>
+                            <label for="name">Username</label>
+                            <input type="text" id="name" value="{{user.username}}" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" id="username" value="@markjoshua" readonly>
+                            <label for="username">Email</label>
+                            <input type="text" id="username" value="{{user.email}}" readonly>
                         </div>
-                        <div class="form-group">
-                            <label for="bio">Bio</label>
-                            <textarea id="bio" placeholder="Share a little something about yourself"></textarea>
-                        </div>
-                
+                    </form>
+
+                    <form action="{% url 'user_profile' %}" method="POST">
+                        {% csrf_token %}
                         <!-- Centered Delete Account Button with Warning Icon -->
                         <div class="delete-btn-container">
-                            <button class="delete-account-btn">
+                            <button class="delete-account-btn" type="submit" name="delete_account">
                                 <i class="bi bi-exclamation-octagon"></i> Delete Account
                             </button>
                         </div>
@@ -106,5 +122,21 @@
                 </div>
             </div>
         </section>
+
+        <script>
+            document.getElementById('profile-image').addEventListener('click', function() {
+                document.getElementById('profile-picture-input').click();
+            });
+
+            document.getElementById('profile-picture-input').addEventListener('change', function(event) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profile-image').src = e.target.result;
+                    document.getElementById('submit-picture').click(); 
+                }
+                reader.readAsDataURL(event.target.files[0]);
+            });
+        </script>
+        
     </body>
     </html>

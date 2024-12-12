@@ -53,7 +53,7 @@
 
         <section class="main-section">
             <div class="white-box">
-                <img src="{% static 'img/Generic avatar.png' %}" alt="Profile Picture" class="profile-picture">
+                <img src="{{ profile.profile_pic.url }}" alt="Profile Picture" class="profile-picture">
                 <div class="text-info">
                     {% if user.is_authenticated %}
                         <span class="greeting-text"><b>Hi, {{ user.username }}!</b></span>
@@ -61,9 +61,9 @@
                         <span class="greeting-text"><b>Hi, user!</b></span>
                     {% endif %}
                     <div class="events-info">
-                        <i class="bi bi-mic"></i> Events Hosted: {{ events_hosted }}
+                        <i class="bi bi-mic"></i> Events Hosted: {{ created_events_count }}
                         <span class="events-separator"></span> 
-                        <i class="bi bi-ticket-perforated"></i> Events Attended: {{ events_attended }}
+                        <i class="bi bi-ticket-perforated"></i> Events Attended: {{ registered_events_count }}
                     </div>
                 </div>
             </div>
@@ -74,8 +74,8 @@
                 </div>
             </div>
                 {% if upcoming_events %}
-                    <div class="upcoming-events-display">
-                        {% for event in upcoming_events %}
+                <div class="upcoming-events-display">
+                    {% for event in upcoming_events|slice:":6" %}
                         <a href="{% url 'user_userregistration' event.pk %}">
                             <div class="event-container">
                                 <div class="image-container">
@@ -88,7 +88,7 @@
                                     </div>
                                     <div class="event-right">
                                         <div class="event-title">{{ event.event_name }}</div>
-                                        <div class="event-host">By {{ event.created_by }}</div>
+                                        <div class="event-host">By {{ event.created_by.username }}</div>
                                         <div class="event-time">{{ event.event_start|date:"g:i A" }} - {{ event.event_end|date:"g:i A" }}</div>
                                         <div class="event-location">{{ event.event_location }}</div>
                                     </div>
@@ -96,7 +96,7 @@
                             </div>
                         </a>
                     {% endfor %}
-                    </div>
+                </div>
                 {% else %}
                     <div class="middle-text">
                         <h3 style="color: #8CA8BE;">No Upcoming Events</h3>
@@ -108,13 +108,29 @@
                         </a>
                     </div>
                 {% endif %}
-            </div>
 
-            {% if registered_events > 6 %}
-                <div class="see-more-container">
-                    <button class="see-more-btn">See More</button>
+            {% if upcoming_events > 6 %}
+            <div class="see-more-container">
+                <a href="{% url 'user_dashboard' %}?show_all=true" class="see-more-btn">See More</a>
+            </div>
+            {% endif %}
+
+            {% if upcoming_events %}
+                <div class="banner">
+                    <div class="row"> 
+                        <div class="create-event-img"> 
+                            <img src="{% static 'img/dashboard.png' %}" alt="Calendar" class="img-fluid">
+                        </div>
+                        <div class="create-event-text">
+                            <h1>Create an event with GatherUp</h1> 
+                            <p>Got a show, event, activity or a great experience?</p>
+                        </div>
+                        <div class="button-container">
+                            <a href="{% url 'user_eventcreation' %}" class="create-event-banner-btn">+ Create Event</a>
+                        </div>
+                    </div>
                 </div>
-            {% endif%}
+            {% endif %}
 
 
             <div class="previous-events">
@@ -125,7 +141,7 @@
 
             {% if past_events %}
                 <div class="upcoming-events-display">
-                    {% for event in past_events %}
+                    {% for event in past_events|slice:":6" %}
                     <a href="{% url 'user_userregistration' event.pk %}">
                         <div class="event-container">
                             <div class="image-container">
@@ -138,7 +154,7 @@
                                 </div>
                                 <div class="event-right">
                                     <div class="event-title">{{ event.event_name }}</div>
-                                    <div class="event-host">By {{ username }}</div>
+                                    <div class="event-host">By {{ event.created_by }}</div>
                                     <div class="event-time">{{ event.event_start|date:"g:i A" }} - {{ event.event_end|date:"g:i A" }}</div>
                                     <div class="event-location">{{ event.event_location }}</div>
                                 </div>

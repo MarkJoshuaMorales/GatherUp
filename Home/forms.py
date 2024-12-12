@@ -69,3 +69,11 @@ class EventForm(forms.ModelForm):
                 'class': 'switch-input'
             })
         }
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['profile_pic']
+        widgets = {
+            'profile_pic': forms.ClearableFileInput(attrs={'class': 'form-control-file'})
+        }

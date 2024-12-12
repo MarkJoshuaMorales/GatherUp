@@ -16,8 +16,8 @@
                     <div class="container d-flex align-items-center justify-content-between">
                         <div class="logo-container d-flex align-items-center">
                             <img style="width: 8%;" src="{% static 'img/Logo.png' %}" class="thumbnail">
-                            <a class="navbar-brand logo_h" href="#" style="text-decoration: none;">
-                                <span style="padding-left:10px; color: black; font-size: 180%; font-family: 'Nunito', sans-serif; font-weight: 1000;"> 
+                            <a class="navbar-brand logo_h" href="{% url 'user_dashboard' %}" style="text-decoration: none;">
+                                <span style="padding-left:10px; color: black; font-size: 180%; font-family: 'Nunito', sans-serif; font-weight: 1000;">
                                     <span style="color: #315098;">GatherUp</span>
                                 </span>
                             </a>
@@ -27,19 +27,19 @@
                             <ul class="navbar-nav ml-auto">
                                 
                                 <li class="nav-item">
-                                    <a class="nav-link notification-icon" href="/user_notifications">
+                                    <a class="nav-link notification-icon" href="{% url 'user_notifications' %}">
                                         <i class="bi bi-bell"></i>
                                     </a>
                                 </li>
         
                                 <li class="nav-item">
-                                    <a class="nav-link user-icon" href="/user_profile">
+                                    <a class="nav-link user-icon" href="{% url 'user_profile' %}">
                                         <i class="bi bi-person-circle"></i>
                                     </a>
                                 </li>
         
                                 <li class="nav-item">
-                                    <a class="nav-link logout-btn" href="/">
+                                    <a class="nav-link logout-btn" href="{% url 'login' %}?logout=true">
                                         <i class="bi bi-box-arrow-right"></i> Logout
                                     </a>
                                 </li>                             
@@ -81,14 +81,8 @@
                             <div class="gray-line"></div>
                         </div>
                         <div class="user-icon">
-                            <img src="{% static 'img/Joshua.jpg' %}" alt="Profile Picture" class="profile-picture" style="height: 30px; width: 30px;" >
+                            <img src="{{host_profile.url}}" alt="Profile Picture" class="profile-picture" style="height: 30px; width: 30px;" >
                             <span>{{ event.created_by }}</span>
-                        </div>
-                    </div>
-                    <div class="attendees">
-                        <div class="attendees-container">
-                            <div class="text-left">{{event.num_attendees}} attendees</div>
-                            <div class="gray-line"></div>
                         </div>
                     </div>
                 </div>  
@@ -102,20 +96,20 @@
                 </div>
                 <div class="registration-details">
                     <div class="registrant-info">
-                        <!-- Dynamically load the user's profile picture and name -->
-                        <img src="{% static 'img/Joshua.jpg' %}" alt="Profile Picture" class="profile-picture" style="height: 30px; width: 30px;">
-                        {{ user.username }} <!-- Dynamically display logged-in user's name -->
+                        <img src="{{ profile.profile_pic.url }}" alt="Profile Picture" class="profile-picture" style="height: 30px; width: 30px;">
+                        {{ user.username }}
                     </div>
-                    <!-- Register button that triggers the registration process -->
                     {% if registered %}
-                    <p>You are already registered for this event.</p>
+                        <p>You are already registered for this event.</p>
                     {% else %}
-                    <form method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="register-button">
-                            <i class="bi bi-ticket-detailed"></i> Register
-                        </button>
-                    </form>
+                        <div class="button-container">
+                            <form method="post" onsubmit="event.preventDefault(); changeContent(); this.submit();">
+                                {% csrf_token %}
+                                <button type="submit" class="register-button">
+                                    <i class="bi bi-ticket-detailed"></i> Register
+                                </button>
+                            </form>
+                        </div>
                     {% endif %}
                 </div>
             </div>
@@ -150,13 +144,11 @@
             </div>
         </section>
 
-        <!-- Script for the container -->
+
         <script>
             function changeContent() {
                 
                 const registrationContainer = document.getElementById('registration-container');
-                
-                
                 registrationContainer.innerHTML = '';
         
                 
@@ -179,7 +171,6 @@
                 messageText.style.textAlign = 'left';
                 messageText.style.marginTop = '0px';
         
-                // Append the new elements
                 registrationContainer.appendChild(logo);
                 registrationContainer.appendChild(thankYouText);
                 registrationContainer.appendChild(messageText);

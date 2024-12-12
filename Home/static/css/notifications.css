@@ -197,3 +197,7 @@ html, body {
 .notification-card.unread:hover {
     background-color: #edf5fb; 
 }
+
+.no-notif {
+    text-align: center;
+}

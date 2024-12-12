@@ -140,6 +140,7 @@ html, body {
     color: #221874;
     margin-bottom: 20px;
     font-weight: bold;
+    white-space: nowrap;
 }
 
 .icon-text {
@@ -282,12 +283,19 @@ html, body {
     object-fit: cover;
 }
 
+.button-container {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center; 
+    padding: 20px; 
+}
+
 .register-button {    
     background-color: #315098;
     color: white;
     font-size: 14px;
     font-weight: bold;
-    padding: 15px 400px;
+    padding: 15px 30px; 
     border: none;
     border-radius: 15px;
     cursor: pointer;
@@ -295,7 +303,9 @@ html, body {
     align-items: center;
     justify-content: center; 
     margin-top: 10px; 
-    align-self: center; 
+    align-self: center;
+    width: 700%;
+    
 }
 
 .register-button i {
