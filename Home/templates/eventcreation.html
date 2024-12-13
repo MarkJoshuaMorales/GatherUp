@@ -58,13 +58,11 @@
                 <div class="container">
                     <div class="left-box">
                         <div class="image-box">
-                            <p>Insert Event Image Here</p>
+                            <img id="photo-preview" src="#" alt="Photo Preview" style="display: none; width: 100%; margin-top: 10px;">
+                            <p id="placeholder-text">Insert Event Image Here</p>
                         </div>
                         <div class="upload-photo-container">
-                            {{ form.event_image }}
-                            <label for="upload-photo" class="upload-photo-btn">
-                                <i class="bi bi-camera-fill"></i> Upload a Photo
-                            </label>
+                            {{ form.event_image }}                            
                         </div>
                     </div>                    
                     <div class="right-box">
@@ -110,6 +108,31 @@
             </form>
             
         </section>    
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const fileInput = document.querySelector('input[type="file"]');
+                const photoPreview = document.getElementById('photo-preview');
+                const placeholderText = document.getElementById('placeholder-text');
+        
+                fileInput.addEventListener('change', function(event) {
+                    const file = event.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            photoPreview.src = e.target.result;
+                            photoPreview.style.display = 'block';
+                            placeholderText.style.display = 'none';
+                        }
+                        reader.readAsDataURL(file);
+                    } else {
+                        photoPreview.src = '#';
+                        photoPreview.style.display = 'none';
+                        placeholderText.style.display = 'block';
+                    }
+                });
+            });
+        </script>
         <script src="{% static 'js/eventcreation.js' %}"></script>
     </body>
     </html>

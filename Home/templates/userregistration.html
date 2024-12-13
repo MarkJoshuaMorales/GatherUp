@@ -108,7 +108,7 @@
                     {% if registered %}
                     <p>You are already registered for this event.</p>
                     {% else %}
-                    <form method="post">
+                    <form method="post" onsubmit="changeContent(event);" >
                         {% csrf_token %}
                         <button type="submit" class="register-button">
                             <i class="bi bi-ticket-detailed"></i> Register
@@ -151,35 +151,53 @@
 
 
         <script>
-            function changeContent() {
+            function changeContent(event) {
+                event.preventDefault(); 
                 
-                const registrationContainer = document.getElementById('registration-container');
-                registrationContainer.innerHTML = '';
-        
+                const form = event.target.closest('form'); 
+                const formData = new FormData(form);  
                 
-                const logo = document.createElement('img');
-                logo.src = '{% static "img/BlackLogo.png" %}';  
-                logo.alt = 'Event Logo';
-                logo.style.width = '50px';  
-                logo.style.margin = '0 auto';
-                logo.style.display = 'left';
-        
-                const thankYouText = document.createElement('p');
-                thankYouText.textContent = 'Thank you for Joining!';
-                thankYouText.style.fontSize = '30px';
-                thankYouText.style.textAlign = 'left';
-                thankYouText.style.marginTop = '10px';
-        
-                const messageText = document.createElement('p');
-                messageText.textContent = 'We hope you enjoyed the event.';
-                messageText.style.fontSize = '18px';
-                messageText.style.textAlign = 'left';
-                messageText.style.marginTop = '0px';
-        
-                registrationContainer.appendChild(logo);
-                registrationContainer.appendChild(thankYouText);
-                registrationContainer.appendChild(messageText);
+                fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+                    },
+                    body: formData
+                })
+                .then(response => {
+                    if (response.ok) {
+                        const registrationContainer = document.getElementById('registration-container');
+                        registrationContainer.innerHTML = '';
+                        
+                        const logo = document.createElement('img');
+                        logo.src = '{% static "img/BlackLogo.png" %}';  
+                        logo.alt = 'Event Logo';
+                        logo.style.width = '50px';  
+                        logo.style.margin = '0 auto';
+                        logo.style.display = 'left';
+                
+                        const thankYouText = document.createElement('p');
+                        thankYouText.textContent = 'Thank you for Joining!';
+                        thankYouText.style.fontSize = '30px';
+                        thankYouText.style.textAlign = 'left';
+                        thankYouText.style.marginTop = '10px';
+                
+                        const messageText = document.createElement('p');
+                        messageText.textContent = 'We hope you enjoyed the event.';
+                        messageText.style.fontSize = '18px';
+                        messageText.style.textAlign = 'left';
+                        messageText.style.marginTop = '0px';
+                
+                        registrationContainer.appendChild(logo);
+                        registrationContainer.appendChild(thankYouText);
+                        registrationContainer.appendChild(messageText);
+                    } else {
+                        console.error('Failed to register');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
             }
+
         </script>
 
         

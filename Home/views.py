@@ -99,11 +99,13 @@ def dashboard(request):
     created_by = Event.objects.filter(created_by=request.user)
     created_events_count = Event.objects.filter(created_by=request.user).count()
 
-    registered_events = [
-        event for event in upcoming_events if event.attendees.filter(id=request.user.id).exists()
-    ]
+    registered_events = Event.objects.filter(attendees=request.user)
+    upcoming_registered_events = registered_events.filter(event_start__gte=timezone.now())
+    past_registered_events = registered_events.filter(event_start__lt=timezone.now())
 
-    registered_events_count = len(registered_events)
+    upcoming_registered_events_count = upcoming_registered_events.count()
+    past_registered_events_count = past_registered_events.count()
+    registered_events_count = upcoming_registered_events_count + past_registered_events_count
 
     context = {
         'username': request.user.username,
@@ -116,6 +118,8 @@ def dashboard(request):
         'created_events_count': created_events_count,
         'registered_events': registered_events,
         'registered_events_count': registered_events_count,
+        'upcoming_registered_events_count': upcoming_registered_events_count,
+        'past_registered_events_count': past_registered_events_count,
     }
     return render(request, 'dashboard.html', context)
 
@@ -175,19 +179,16 @@ def userregistration(request, pk):
     host_profile = get_object_or_404(Profile, user=event.created_by)
     registered = request.user in event.attendees.all()
 
-    if request.method == 'POST':
-        if request.user not in event.attendees.all():
-            event.attendees.add(request.user)
-            event.save()
-            Notification.objects.create(
-                    recipient=event.created_by,
-                    message=f"{request.user.username} has registered for your event: {event.event_name}"
-                )
-            messages.success(request, "You have successfully registered for the event!")
-        else:
-            messages.warning(request, "You are already registered for this event.")
-        return redirect('user_userregistration', pk=pk)
-
+    if request.method == 'POST' and not registered:
+        event.attendees.add(request.user)
+        event.save()
+        Notification.objects.create(
+            recipient=event.created_by,
+            message=f"{request.user.username} has registered for your event: {event.event_name}"
+        )
+        messages.success(request, "You have successfully registered for the event!")
+        registered = True
+        
     num_attendees = event.attendees.count()
 
     profile = Profile.objects.get(user=request.user)
