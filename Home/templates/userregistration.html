@@ -84,6 +84,12 @@
                             <img src="{{host_profile.url}}" alt="Profile Picture" class="profile-picture" style="height: 30px; width: 30px;" >
                             <span>{{ event.created_by }}</span>
                         </div>
+                        <div class="attendees">
+                            <div class="attendees-container">
+                                <div class="text-left">{{num_attendees}} attendees</div>
+                                <div class="gray-line"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>  
             </div>              
@@ -100,17 +106,16 @@
                         {{ user.username }}
                     </div>
                     {% if registered %}
-                        <p>You are already registered for this event.</p>
+                    <p>You are already registered for this event.</p>
                     {% else %}
-                        <div class="button-container">
-                            <form method="post" onsubmit="event.preventDefault(); changeContent(); this.submit();">
-                                {% csrf_token %}
-                                <button type="submit" class="register-button">
-                                    <i class="bi bi-ticket-detailed"></i> Register
-                                </button>
-                            </form>
-                        </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="register-button">
+                            <i class="bi bi-ticket-detailed"></i> Register
+                        </button>
+                    </form>
                     {% endif %}
+                    
                 </div>
             </div>
             

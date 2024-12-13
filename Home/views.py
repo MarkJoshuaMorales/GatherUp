@@ -11,7 +11,9 @@ from django.utils import timezone
 from geopy.geocoders import Nominatim
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
-from .models import Notification
+from .models import *
+
+
 
 # Sign Up
 @csrf_protect
@@ -23,14 +25,12 @@ def registration(request):
             email = form.cleaned_data["email"]
             password1 = form.cleaned_data["password"]
 
-            # Create the user
             user_creds = User.objects.create_user(username=username, email=email, password=password1)
 
-            # Ensure a Profile is created for the new user
-            # Use get_or_create to avoid duplicate profile creation
+
             profile, created = Profile.objects.get_or_create(user=user_creds)
 
-            # If the profile is newly created and has no picture, set the default one
+
             if created and not profile.profile_pic:
                 profile.profile_pic = 'profile_pics/Generic avatar.png'
                 profile.save()
@@ -51,14 +51,14 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('user_dashboard')  # Redirect to your desired page
+            return redirect('user_dashboard')
         else:
             form.add_error(None, "Invalid username or password")
     elif request.method == 'GET' and 'logout' in request.GET:
         # Logout action
         logout(request)
         messages.success(request, "You have been logged out.")
-        return redirect('login')  # Redirect to the login page after logout
+        return redirect('login')
     else:
         form = AuthenticationForm()
 
@@ -98,8 +98,12 @@ def dashboard(request):
     
     created_by = Event.objects.filter(created_by=request.user)
     created_events_count = Event.objects.filter(created_by=request.user).count()
-    registered_events_count = Event.objects.filter(attendees=request.user).count()
 
+    registered_events = [
+        event for event in upcoming_events if event.attendees.filter(id=request.user.id).exists()
+    ]
+
+    registered_events_count = len(registered_events)
 
     context = {
         'username': request.user.username,
@@ -109,8 +113,9 @@ def dashboard(request):
         'past_events_count': past_events.count(),
         'created_by': created_by,
         'profile': profile,
+        'created_events_count': created_events_count,
+        'registered_events': registered_events,
         'registered_events_count': registered_events_count,
-        'created_events_count': created_events_count
     }
     return render(request, 'dashboard.html', context)
 
@@ -123,6 +128,12 @@ def profile(request):
     
 
     if request.method == 'POST':
+        if 'delete_account' in request.POST:
+            user = request.user
+            user.delete()
+            messages.success(request, "Your account has been deleted successfully.")
+            return redirect('login')
+
         form = ProfileForm(request.POST, request.FILES, instance=profile)
 
         if 'clear' in request.POST:
@@ -136,13 +147,6 @@ def profile(request):
 
     else:
         form = ProfileForm(instance=profile)
-
-    if request.method == "POST" and 'delete_account' in request.POST:
-        user = request.user
-        user.delete() 
-        messages.success(request, "Your account has been deleted successfully.")
-        return redirect('login')
-
 
 
     context = {
@@ -183,7 +187,7 @@ def userregistration(request, pk):
         else:
             messages.warning(request, "You are already registered for this event.")
         return redirect('user_userregistration', pk=pk)
-    
+
     num_attendees = event.attendees.count()
 
     profile = Profile.objects.get(user=request.user)
